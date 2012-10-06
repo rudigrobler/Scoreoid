@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Scoreoid.WinRT.Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Scoreoid.WinRT.Sample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xc="using:WinRTXamlToolkit.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <Button Content="ResetScoreoidSettings()" Click="Button_Click_2" />
+            <Button Content="GetPlayer()" Click="Button_Click_1" />
+            <TextBox Text="100" Width="200" HorizontalAlignment="Left" x:Name="score" />
+            <Button Content="CreateScore()" Click="Button_Click_3" />
+            <Button Content="GetBestScores()" Click="Button_Click_4" />                 
+        </StackPanel>
+        <local:ScoreoidAddAccount />      
+    </Grid>
+</Page>
