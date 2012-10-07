@@ -135,9 +135,12 @@
     <None Include="Scoreoid.WinRT.Sample_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\epicfooter.png" />
+    <Content Include="Assets\GetBestScores.png" />
+    <Content Include="Assets\GetPlayer.png" />
     <Content Include="Assets\GravatarPlaceholder.png" />
     <Content Include="Assets\Logo.png" />
-    <Content Include="Assets\samples.png" />
+    <Content Include="Assets\ResetScoreoidSettings.png" />
     <Content Include="Assets\scoreiod_logo.png" />
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -78,6 +79,12 @@ namespace Scoreoid.WinRT.Sample
                 catch (ScoreoidException ex)
                 {
                     MessageDialog dlg = new MessageDialog(ex.Message);
+                    dlg.Title = "ERROR";
+                    dlg.ShowAsync();
+                }
+                catch (HttpRequestException ex)
+                {
+                    var dlg = new MessageDialog(ex.Message);
                     dlg.Title = "ERROR";
                     dlg.ShowAsync();
                 }

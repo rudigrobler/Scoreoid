@@ -9,13 +9,39 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <Button Content="ResetScoreoidSettings()" Click="Button_Click_2" />
-            <Button Content="GetPlayer()" Click="Button_Click_1" />
-            <TextBox Text="100" Width="200" HorizontalAlignment="Left" x:Name="score" />
-            <Button Content="CreateScore()" Click="Button_Click_3" />
-            <Button Content="GetBestScores()" Click="Button_Click_4" />                 
+        <Image Source="Assets/epicfooter.png" Stretch="Fill" Margin="0,10,0,-10"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Click="Button_Click_2" Width="175" Height="105" Background="#FFCDC400" >
+            	<Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            		<Grid.RowDefinitions>
+            			<RowDefinition Height="Auto" />
+            			<RowDefinition Height="Auto" />
+            		</Grid.RowDefinitions>
+            		<Image Source="Assets/ResetScoreoidSettings.png" Stretch="Fill" Grid.Row="0" VerticalAlignment="Top" Width="64" Height="64"/>      
+            		<TextBlock Text="ResetScoreoidSettings()" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0" FontFamily="Segoe WP Light" Style="{StaticResource CaptionTextStyle}" Foreground="Black"/>
+            	</Grid>
+            </Button>
+            <Button Click="Button_Click_1" Width="175" Background="#FFCDC400" >
+            	<Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            		<Grid.RowDefinitions>
+            			<RowDefinition Height="Auto" />
+            			<RowDefinition Height="Auto" />
+            		</Grid.RowDefinitions>
+            		<Image Source="Assets/GetPlayer.png" Stretch="Fill" Grid.Row="0" VerticalAlignment="Top" Width="64" Height="64"/>      
+            		<TextBlock Text="GetPlayer()" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0" FontFamily="Segoe WP Light" Style="{StaticResource CaptionTextStyle}" Foreground="Black"/>
+            	</Grid>
+            </Button>
+            <Button Click="Button_Click_4" Width="175" Background="#FFCDC400" >
+            	<Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            		<Grid.RowDefinitions>
+            			<RowDefinition Height="Auto" />
+            			<RowDefinition Height="Auto" />
+            		</Grid.RowDefinitions>
+            		<Image Source="Assets/GetBestScores.png" Stretch="Fill" Grid.Row="0" Width="64"/>      
+            		<TextBlock Text="GetBestScores()" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0" FontFamily="Segoe WP Light" Style="{StaticResource CaptionTextStyle}" Foreground="Black"/>
+            	</Grid>
+            </Button>                 
         </StackPanel>
-        <local:ScoreoidAddAccount />      
+        <local:ScoreoidAddAccount d:IsHidden="True" />      
     </Grid>
 </Page>

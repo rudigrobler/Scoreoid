@@ -35,11 +35,11 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Style="{StaticResource BodyTextStyle}" Grid.Row="0" Margin="0,0,0,12"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Style="{StaticResource BodyTextStyle}" Grid.Row="0" Margin="0,0,0,6"/>
             <TextBox x:Name="username" Width="350" HorizontalAlignment="Left" Grid.Row="1" />
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="password [OPTIONAL]" VerticalAlignment="Top" Style="{StaticResource BodyTextStyle}" Grid.Row="2" Margin="0,12"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="password [OPTIONAL]" VerticalAlignment="Top" Style="{StaticResource BodyTextStyle}" Grid.Row="2" Margin="0,12,0,6"/>
             <TextBox x:Name="password" Width="350" HorizontalAlignment="Left" Grid.Row="3" />
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="email [OPTIONAL]" VerticalAlignment="Top" Style="{StaticResource BodyTextStyle}" Grid.Row="4" Margin="0,12"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="email [OPTIONAL]" VerticalAlignment="Top" Style="{StaticResource BodyTextStyle}" Grid.Row="4" Margin="0,12,0,6"/>
             <TextBox x:Name="email" Width="350" HorizontalAlignment="Left" Grid.Row="5" />
                      
             <Button Content="create" Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="96" Margin="0,0,40,46" Click="Button_Click_1" />
