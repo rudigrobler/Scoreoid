@@ -83,38 +83,38 @@ namespace Scoreoid.WinRT.Sample
             App.ResetScoreoidSettings();
         }
 
-        //private async void Button_Click_3(object sender, RoutedEventArgs e)
-        //{
-        //    if (App.ScoreoidSettings.ContainsKey("username"))
-        //    {
-        //        try
-        //        {
-        //            int _score = int.Parse(score.Text);
-        //            var response = await App.ScoreoidClient.CreateScore(App.ScoreoidSettings["username"].ToString(), _score);
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (App.ScoreoidSettings.ContainsKey("username"))
+            {
+                try
+                {
+                    int _score = int.Parse(score.Text);
+                    var response = await App.ScoreoidClient.CreateScore(App.ScoreoidSettings["username"].ToString(), _score);
 
-        //            var dlg = new MessageDialog(response);
-        //            dlg.ShowAsync();
-        //        }
-        //        catch (ScoreoidException ex)
-        //        {
-        //            var dlg = new MessageDialog(ex.Message);
-        //            dlg.Title = "ERROR";
-        //            dlg.ShowAsync();
-        //        }
-        //        catch (HttpRequestException ex)
-        //        {
-        //            var dlg = new MessageDialog(ex.Message);
-        //            dlg.Title = "ERROR";
-        //            dlg.ShowAsync();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        var dlg = new MessageDialog("No username and/or password");
-        //        dlg.Title = "ERROR";
-        //        dlg.ShowAsync();
-        //    }
-        //}
+                    var dlg = new MessageDialog(response);
+                    dlg.ShowAsync();
+                }
+                catch (ScoreoidException ex)
+                {
+                    var dlg = new MessageDialog(ex.Message);
+                    dlg.Title = "ERROR";
+                    dlg.ShowAsync();
+                }
+                catch (HttpRequestException ex)
+                {
+                    var dlg = new MessageDialog(ex.Message);
+                    dlg.Title = "ERROR";
+                    dlg.ShowAsync();
+                }
+            }
+            else
+            {
+                var dlg = new MessageDialog("No username and/or password");
+                dlg.Title = "ERROR";
+                dlg.ShowAsync();
+            }
+        }
 
         private async void Button_Click_4(object sender, RoutedEventArgs e)
         {
