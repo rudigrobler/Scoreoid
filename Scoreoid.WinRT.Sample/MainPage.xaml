@@ -9,45 +9,15 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Image Source="Assets/epicfooter.png" Stretch="Fill" Margin="0,10,0,-10"/>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-        		<TextBox x:Name="score" TextWrapping="Wrap" Text="100" Width="345" VerticalAlignment="Top" Margin="0,3,0,0" />
-        		<Button Content="CreateScore()" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="175" Margin="5,0,0,0" Background="#FFCDC400" Foreground="Black" Click="Button_Click_3" Height="39"/>
-        	</StackPanel>
-        	<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        		<Button Click="Button_Click_2" Width="175" Height="105" Background="#FFCDC400" >
-        			<Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-        				<Grid.RowDefinitions>
-        					<RowDefinition Height="Auto" />
-        					<RowDefinition Height="Auto" />
-        				</Grid.RowDefinitions>
-        				<Image Source="Assets/ResetScoreoidSettings.png" Stretch="Fill" Grid.Row="0" VerticalAlignment="Top" Width="64" Height="64"/>      
-        				<TextBlock Text="ResetScoreoidSettings()" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0" FontFamily="Segoe WP Light" Style="{StaticResource CaptionTextStyle}" Foreground="Black"/>
-        			</Grid>
-        		</Button>
-        		<Button Click="Button_Click_1" Width="175" Background="#FFCDC400" >
-        			<Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-        				<Grid.RowDefinitions>
-        					<RowDefinition Height="Auto" />
-        					<RowDefinition Height="Auto" />
-        				</Grid.RowDefinitions>
-        				<Image Source="Assets/GetPlayer.png" Stretch="Fill" Grid.Row="0" VerticalAlignment="Top" Width="64" Height="64"/>      
-        				<TextBlock Text="GetPlayer()" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0" FontFamily="Segoe WP Light" Style="{StaticResource CaptionTextStyle}" Foreground="Black"/>
-        			</Grid>
-        		</Button>
-        		<Button Click="Button_Click_4" Width="175" Background="#FFCDC400" >
-        			<Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-        				<Grid.RowDefinitions>
-        					<RowDefinition Height="Auto" />
-        					<RowDefinition Height="Auto" />
-        				</Grid.RowDefinitions>
-        				<Image Source="Assets/GetBestScores.png" Stretch="Fill" Grid.Row="0" Width="64"/>      
-        				<TextBlock Text="GetBestScores()" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0" FontFamily="Segoe WP Light" Style="{StaticResource CaptionTextStyle}" Foreground="Black"/>
-        			</Grid>
-        		</Button>                 
-        	</StackPanel>
+        <Image Source="Assets/epicfooter.png" Stretch="Fill" />
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Click="Button_Click_2" Width="200" Background="#FFCDC400" Foreground="Black" BorderThickness="0" Content="ResetScoreoidSettings()" Height="38" />
+            <Button Click="Button_Click_1" Width="200" Background="#FFCDC400" Foreground="Black" BorderThickness="0" Content="GetPlayer()" Height="38" />
+            <Button Click="Button_Click_4" Width="200" Background="#FFCDC400" Foreground="Black" BorderThickness="0" Content="GetBestScores()" Height="38" />
+            <TextBox x:Name="score" Text="100" Width="194" Margin="0,2" />
+            <Button Click="Button_Click_3" Width="200" Background="#FFCDC400" Foreground="Black" BorderThickness="0" Content="CreateScore()" Height="38" />
         </StackPanel>
-        <local:ScoreoidAddAccount d:IsHidden="True" />      
+        <local:ScoreoidAddAccount d:IsHidden="True" />
+        <Image Source="Assets/scoreiod_logo.png" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,40,0,0"/>      
     </Grid>
 </Page>

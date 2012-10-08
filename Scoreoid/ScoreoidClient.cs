@@ -21,7 +21,7 @@ namespace Scoreoid
         public ScoreoidClient(string api_key, string game_id)
         {
             this.api_key = api_key;
-            this.game_id = game_id;
+            this.game_id = game_id;            
         }
         
         private static readonly Regex ErrorRegex = new Regex(@"<error\b[^>]*>(.*?)</error>", RegexOptions.Singleline);
@@ -112,10 +112,11 @@ namespace Scoreoid
 
         private async Task<Stream> ScoreoidPostAsStream(string uri, Dictionary<string, string> post_data)
         {
-            HttpClient client = new HttpClient();
+            HttpClientHandler handler = new HttpClientHandler();
+            handler.Proxy = WebRequest.DefaultWebProxy;
+            HttpClient client = new HttpClient(handler);
 
             var responseMessage = await client.PostAsync(uri, new FormUrlEncodedContent(post_data));
-
             var error = ErrorRegex.Match(await responseMessage.Content.ReadAsStringAsync());
             if (error.Success)
             {
@@ -127,7 +128,9 @@ namespace Scoreoid
 
         private async Task<string> ScoreoidPostAsString(string uri, Dictionary<string, string> post_data)
         {
-            HttpClient client = new HttpClient();
+            HttpClientHandler handler = new HttpClientHandler();
+            handler.Proxy = WebRequest.DefaultWebProxy;
+            HttpClient client = new HttpClient(handler);
 
             var responseMessage = await client.PostAsync(uri, new FormUrlEncodedContent(post_data));
             var responseMessageContent = await responseMessage.Content.ReadAsStringAsync();

@@ -89,7 +89,7 @@ namespace Scoreoid.WinRT.Sample
             {
                 try
                 {
-                    int _score = int.Parse(score.Text);
+                    int _score = 150;// int.Parse(score.Text);
                     var response = await App.ScoreoidClient.CreateScore(App.ScoreoidSettings["username"].ToString(), _score);
 
                     var dlg = new MessageDialog(response);
