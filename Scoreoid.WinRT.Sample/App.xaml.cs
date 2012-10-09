@@ -30,7 +30,7 @@ namespace Scoreoid.WinRT.Sample
             get
             {
                 if (scoreoidClient == null)
-                    scoreoidClient = new ScoreoidClient("e268410b95127e1a6d9ac447f8e2a29176ae3fb9", "K6qAAMxWs");
+                    scoreoidClient = new ScoreoidClient("e268410b95127e1a6d9ac447f8e2a29176ae3fb9", "lGKkihyFl");
 
                 return scoreoidClient;
             }
