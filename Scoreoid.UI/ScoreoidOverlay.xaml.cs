@@ -1,4 +1,5 @@
 ﻿using Scoreoid.UI.Primitives;
+using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -62,6 +63,14 @@ namespace Scoreoid.UI
             {
                 var dlg = new MessageDialog("Please enter a valid scoreoid username and/or password") {Title = "ERROR"};
                 dlg.ShowAsync();
+            }
+        }
+
+        private void password_KeyDown_1(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                SaveButton_Click(sender, new RoutedEventArgs());
             }
         }
     }
