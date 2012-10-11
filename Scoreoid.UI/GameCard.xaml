@@ -13,7 +13,10 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Border Margin="6" HorizontalAlignment="Left" Background="Gray" Grid.Column="0">
-                <Image Width="50" Height="50" x:Name="gravatar" />
+                <Grid>
+                    <Image Width="50" Height="50" Source="Assets/gravatarDefault.jpg" />
+                    <Image Width="50" Height="50" x:Name="gravatar" />
+                </Grid>
             </Border>
             <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="5,0,0,0">
                 <TextBlock x:Name="username" Text="player.username" Style="{StaticResource TitleTextStyle}" />
