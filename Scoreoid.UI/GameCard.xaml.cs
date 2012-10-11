@@ -63,7 +63,7 @@ namespace Scoreoid.UI
             {
                 try
                 {
-                    var player = await ScoreoidManager.ScoreoidClient.GetPlayer(ScoreoidManager.username, ScoreoidManager.password);
+                    var player = await ScoreoidManager.ScoreoidClient.GetPlayerAsync(ScoreoidManager.username, ScoreoidManager.password);
 
                     inProgress.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     errorDetails.Visibility = Windows.UI.Xaml.Visibility.Collapsed;

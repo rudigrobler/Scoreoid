@@ -57,7 +57,7 @@ namespace Scoreoid.UI.Primitives
 
                 try
                 {
-                    string response = await ScoreoidManager.ScoreoidClient.CreatePlayer(player);
+                    string response = await ScoreoidManager.ScoreoidClient.CreatePlayerAsync(player);
 
                     MessageDialog dlg = new MessageDialog(response);
                     dlg.Title = "PLAYER";

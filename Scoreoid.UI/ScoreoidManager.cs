@@ -80,7 +80,7 @@ namespace Scoreoid.UI
 
         public static async Task<string> CreateScore(int score)
         {
-            var _score = await ScoreoidClient.CreateScore(username, score);
+            var _score = await ScoreoidClient.CreateScoreAsync(username, score);
 
             if (Refresh != null)
                 Refresh(null, EventArgs.Empty);
@@ -91,7 +91,7 @@ namespace Scoreoid.UI
         public static async Task<Leaderboard> GetLeaderboard(string order_by = "score", string order = "desc", int limit = 10)
         {
             Leaderboard leaderboard = new Leaderboard();
-            var scores = await ScoreoidClient.GetBestScores(order_by, order, limit);
+            var scores = await ScoreoidClient.GetBestScoresAsync(order_by, order, limit);
             int rank = 1;
             leaderboard.Items = (from _ in scores.items
                                     select new LeaderboardItem()
