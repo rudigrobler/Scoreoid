@@ -42,6 +42,7 @@ namespace Scoreoid.UI
                                                            {
                                                                Text = (string) e.NewValue,
                                                                VerticalAlignment = VerticalAlignment.Center,
+                                                               Opacity = 0.5,
                                                                Margin = new Thickness(10, -4, 0, 0)
                                                            };
                                               watermarks[control.GetHashCode()] = tb;
