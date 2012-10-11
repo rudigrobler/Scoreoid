@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
     <authors>Rudi Grobler</authors>
     <owners>Rudi Grobler</owners>
     <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
@@ -21,6 +21,6 @@
   </metadata>
   <files>
     <file src="..\..\src\Scoreoid\bin\Debug\scoreoid.dll" target="lib\winrt45\scoreoid.dll" />
-    <file src="..\..\src\Scoreoid.UI\bin\Debug\scoreoidui.dll" target="lib\winrt45\scoreoidui.dll" />
+    <file src="..\..\src\ScoreoidUI\bin\Debug\scoreoidui.dll" target="lib\winrt45\scoreoidui.dll" />
   </files>
 </package>
