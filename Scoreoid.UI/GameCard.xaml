@@ -9,8 +9,8 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid Width="350" Height="75" Background="Silver">
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="playerDetails" Visibility="Collapsed">
+    <Grid Width="350" Height="75" Background="Silver" IsTapEnabled="True" Tapped="Refresh_Tapped">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="playerDetails" Visibility="Collapsed" IsHitTestVisible="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -22,10 +22,10 @@
                 <TextBlock x:Name="best_score" Text="player.best_score" Style="{StaticResource SubtitleTextStyle}" />
             </StackPanel>
         </Grid>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="errorDetails" Visibility="Collapsed" Margin="12.5,10,0,0">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="errorDetails" Visibility="Collapsed" Margin="12.5,10,0,0" IsHitTestVisible="False">
             <TextBlock Text="Game card not available" Style="{StaticResource TitleTextStyle}" />
             <TextBlock x:Name="errorMessage" Style="{StaticResource SubtitleTextStyle}" />
         </StackPanel>
-        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="True" x:Name="inProgress" />            
+        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="True" x:Name="inProgress" IsHitTestVisible="False" />            
     </Grid>
 </UserControl>

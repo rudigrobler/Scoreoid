@@ -24,34 +24,41 @@ namespace Scoreoid.UI
         {
             this.InitializeComponent();
             Loaded += GameCard_Loaded;
+            Unloaded += GameCard_Unloaded;
+        }
+
+        void GameCard_Unloaded(object sender, RoutedEventArgs e)
+        {
+            ScoreoidManager.Refresh -= ScoreoidManager_Refresh;
         }
 
         void GameCard_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateGameCard();
+            Refresh();
+
+            ScoreoidManager.Refresh += ScoreoidManager_Refresh;
         }
 
-        private async void UpdateGameCard()
+        void ScoreoidManager_Refresh(object sender, EventArgs e)
         {
-            var container = ApplicationData.Current.LocalSettings.CreateContainer("scoreoid", ApplicationDataCreateDisposition.Always);
+            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(
+                () => 
+                {
+                    Refresh();
+                }));            
+        }
 
-            string _username = string.Empty;
-            if (container.Values.ContainsKey("username"))
-            {
-                _username = container.Values["username"].ToString();
-            }
+        public async void Refresh()
+        {
+            inProgress.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            errorDetails.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            playerDetails.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
-            string _password = string.Empty;
-            if (container.Values.ContainsKey("password"))
-            {
-                _password = container.Values["password"].ToString();
-            }
-
-            if (!string.IsNullOrEmpty(_username))
+            if (!string.IsNullOrEmpty(ScoreoidManager.username))
             {
                 try
                 {
-                    var player = await ScoreoidManager.ScoreoidClient.GetPlayer(_username, _password);
+                    var player = await ScoreoidManager.ScoreoidClient.GetPlayer(ScoreoidManager.username, ScoreoidManager.password);
 
                     inProgress.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     errorDetails.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
@@ -80,7 +87,16 @@ namespace Scoreoid.UI
                 inProgress.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 errorDetails.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 playerDetails.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            
                 errorMessage.Text = "No username/password";
+            }
+        }
+
+        private void Refresh_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (inProgress.Visibility != Windows.UI.Xaml.Visibility.Visible)
+            {
+                Refresh();
             }
         }
     }
