@@ -18,24 +18,61 @@ namespace Scoreoid.UI
             ScoreoidManager.game_id = game_id;
         }
 
-        private static ScoreoidClient scoreoidClient;
-        public static ScoreoidClient ScoreoidClient
+        public static event EventHandler Refresh;
+
+        private static ScoreoidClient _scoreoidClient;
+        internal static ScoreoidClient ScoreoidClient
         {
             get
             {
                 if (string.IsNullOrEmpty(api_key) || string.IsNullOrEmpty(game_id))
                     throw new ScoreoidException("ScoreClient not initialized.");
 
-                if (scoreoidClient == null)
-                    scoreoidClient = new ScoreoidClient(api_key, game_id);
+                if (_scoreoidClient == null)
+                    _scoreoidClient = new ScoreoidClient(api_key, game_id);
 
-                return scoreoidClient;
+                return _scoreoidClient;
+            }
+        }
+
+        public static string username
+        {
+            get
+            {
+                var container = ApplicationData.Current.LocalSettings.CreateContainer("scoreoid", ApplicationDataCreateDisposition.Always);
+                if (container.Values.ContainsKey("username"))
+                    return (string)container.Values["username"];
+                return string.Empty;
+            }
+            set
+            {
+                var container = ApplicationData.Current.LocalSettings.CreateContainer("scoreoid", ApplicationDataCreateDisposition.Always);
+                container.Values["username"] = value;
+
+                Refresh(null, EventArgs.Empty);
+            }
+        }
+
+        public static string password
+        {
+            get
+            {
+                var container = ApplicationData.Current.LocalSettings.CreateContainer("scoreoid", ApplicationDataCreateDisposition.Always);
+                if (container.Values.ContainsKey("password"))
+                    return (string)container.Values["password"];
+                return string.Empty;
+            }
+            set
+            {
+                var container = ApplicationData.Current.LocalSettings.CreateContainer("scoreoid", ApplicationDataCreateDisposition.Always);
+                container.Values["password"] = value;
             }
         }
 
         public static void ResetSettings()
         {
             ApplicationData.Current.LocalSettings.DeleteContainer("scoreoid");
+            Refresh(null, EventArgs.Empty);
         }
 
     }
