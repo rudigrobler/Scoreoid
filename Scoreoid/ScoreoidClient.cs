@@ -28,7 +28,7 @@ namespace Scoreoid
         private static readonly Regex SuccessRegex = new Regex(@"<success\b[^>]*>(.*?)</success>", RegexOptions.Singleline);
         private static readonly Regex PlayersRegex = new Regex(@"<players\b[^>]*>(.*?)</players>", RegexOptions.Singleline);
 
-        public async Task<string> CreateScore(string username, int score)
+        public async Task<string> CreateScoreAsync(string username, int score)
         {
             var post_data = new Dictionary<string, string>();
             post_data["api_key"] = api_key;
@@ -38,7 +38,7 @@ namespace Scoreoid
             post_data["score"] = score.ToString();
 
             string uri = "https://www.scoreoid.com/api/createScore";
-            string post_response = await ScoreoidPostAsString(uri, post_data);
+            string post_response = await ScoreoidPostAsStringAsync(uri, post_data);
 
             var successRegex = SuccessRegex.Match(post_response);
             if (successRegex.Success)
@@ -49,7 +49,7 @@ namespace Scoreoid
             throw new ScoreoidException();
         }
 
-        public async Task<string> CreatePlayer(player player)
+        public async Task<string> CreatePlayerAsync(player player)
         {
             var post_data = new Dictionary<string, string>();
             post_data["api_key"] = api_key;
@@ -59,7 +59,7 @@ namespace Scoreoid
             post_data.Inject<player>(player);
 
             string uri = "https://www.scoreoid.com/api/createPlayer";
-            string post_response = await ScoreoidPostAsString(uri, post_data);
+            string post_response = await ScoreoidPostAsStringAsync(uri, post_data);
 
             var successRegex = SuccessRegex.Match(post_response);
             if (successRegex.Success)
@@ -70,7 +70,7 @@ namespace Scoreoid
             throw new ScoreoidException();
         }
 
-        public async Task<players> GetPlayer(string username, string password = null, string email = null)
+        public async Task<players> GetPlayerAsync(string username, string password = null, string email = null)
         {
             var post_data = new Dictionary<string, string>();
             post_data["api_key"] = api_key;
@@ -84,10 +84,10 @@ namespace Scoreoid
 
             string uri = "https://www.scoreoid.com/api/getPlayer";
 
-            return await ScoreoidPost<players>(uri, post_data);
+            return await ScoreoidPostAsync<players>(uri, post_data);
         }
 
-        public async Task<scores> GetBestScores(string order_by = "score", string order = "desc", int limit = 10)
+        public async Task<scores> GetBestScoresAsync(string order_by = "score", string order = "desc", int limit = 10)
         {
             var post_data = new Dictionary<string, string>();
             post_data["api_key"] = api_key;
@@ -99,18 +99,18 @@ namespace Scoreoid
 
             string uri = "https://www.scoreoid.com/api/getBestScores";
 
-            return await ScoreoidPost<scores>(uri, post_data);
+            return await ScoreoidPostAsync<scores>(uri, post_data);
         }
 
         #region POST
 
-        private async Task<T> ScoreoidPost<T>(string uri, Dictionary<string, string> post_data) 
+        private async Task<T> ScoreoidPostAsync<T>(string uri, Dictionary<string, string> post_data) 
         {
             XmlSerializer serializer = new XmlSerializer(typeof(T));
-            return (T)serializer.Deserialize(await ScoreoidPostAsStream(uri, post_data));
+            return (T)serializer.Deserialize(await ScoreoidPostAsStreamAsync(uri, post_data));
         }
 
-        private async Task<Stream> ScoreoidPostAsStream(string uri, Dictionary<string, string> post_data)
+        private async Task<Stream> ScoreoidPostAsStreamAsync(string uri, Dictionary<string, string> post_data)
         {
             HttpClientHandler handler = new HttpClientHandler();
             handler.Proxy = WebRequest.DefaultWebProxy;
@@ -126,7 +126,7 @@ namespace Scoreoid
             return await responseMessage.Content.ReadAsStreamAsync();
         }
 
-        private async Task<string> ScoreoidPostAsString(string uri, Dictionary<string, string> post_data)
+        private async Task<string> ScoreoidPostAsStringAsync(string uri, Dictionary<string, string> post_data)
         {
             HttpClientHandler handler = new HttpClientHandler();
             handler.Proxy = WebRequest.DefaultWebProxy;
