@@ -36,10 +36,19 @@ namespace Scoreoid.UI.Primitives
             {
                 player.email = email.Text;
             }
-            if (!string.IsNullOrEmpty(password.Text))
+            if (!string.IsNullOrEmpty(password.Password))
             {
-                player.password = password.Text;
+                player.password = password.Password;
             }
+            if (!string.IsNullOrEmpty(firstName.Text))
+            {
+                player.first_name = firstName.Text;
+            }
+            if (!string.IsNullOrEmpty(lastName.Text))
+            {
+                player.last_name = lastName.Text;
+            }            
+            
             if (!string.IsNullOrEmpty(username.Text))
             {
                 player.username = username.Text;
