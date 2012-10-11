@@ -65,8 +65,8 @@
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="13" Canvas.Top="63" Style="{StaticResource SubtitleTextStyle}" LineStackingStrategy="BaselineToBaseline" UseLayoutRounding="False">
             	<Run Text="scoreoid provide detailed leaderboards, achievements and notifications."/>
             </TextBlock>
-            <TextBox x:Name="username" BorderBrush="#7F000000" BorderThickness="0" Background="White" Height="32" Canvas.Left="10" Canvas.Top="181" Width="389" />
-            <PasswordBox x:Name="password" BorderBrush="#7F000000" BorderThickness="0" Background="White" Height="32" Canvas.Left="10" Canvas.Top="230" Width="389" />
+            <TextBox x:Name="username" local:TextBoxHelpers.Watermark="username" BorderBrush="#7F000000" BorderThickness="0" Background="White" Height="32" Canvas.Left="10" Canvas.Top="181" Width="389" />
+            <PasswordBox x:Name="password" local:TextBoxHelpers.Watermark="password" BorderBrush="#7F000000" BorderThickness="0" Background="White" Height="32" Canvas.Left="10" Canvas.Top="230" Width="389" />
             <Button TabIndex="0" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Canvas.Left="488" Canvas.Top="348" Click="SaveButton_Click" Background="{StaticResource ButtonPointerOverBackgroundThemeBrush}"/>
             <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Canvas.Left="598" Canvas.Top="348" RenderTransformOrigin="0.531,2.053" Click="CancelButton_Click"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="14" Canvas.Top="268" Style="{StaticResource SubtitleTextStyle}" IsTapEnabled="True" Tapped="CreatePlayer_Tapped">

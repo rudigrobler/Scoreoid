@@ -127,6 +127,7 @@
     <Compile Include="ScoreoidOverlay.xaml.cs">
       <DependentUpon>ScoreoidOverlay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TextBoxHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scoreoid\Scoreoid.csproj">
