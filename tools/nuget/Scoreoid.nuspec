@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <version>1.0.0.0</version>
+    <authors>Rudi Grobler</authors>
+    <owners>Rudi Grobler</owners>
+    <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
+    <projectUrl>https://github.com/rudigrobler/Scoreoid.WinRT.Sample</projectUrl>
+    <iconUrl>http://storage2.timheuer.com/CallistoMoon.png</iconUrl>
+    <id>Scoreoid</id>
+    <title>Scoreoid for Windows 8</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A library for accesing scoreoid services from Windows 8</description>
+    <language>en-US</language>
+    <tags>xaml winrt scoreoid</tags>
+	<releaseNotes>
+	<![CDATA[
+		Initial release
+	]]>
+	</releaseNotes>
+  </metadata>
+  <files>
+    <file src="..\..\src\Scoreoid\bin\Debug\scoreoid.dll" target="lib\winrt45\scoreoid.dll" />
+    <file src="..\..\src\Scoreoid.UI\bin\Debug\scoreoidui.dll" target="lib\winrt45\scoreoidui.dll" />
+  </files>
+</package>
