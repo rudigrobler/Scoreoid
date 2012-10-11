@@ -1,30 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace Scoreoid
 {
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "", IsNullable = false)]
     public class scores
     {
-        [System.Xml.Serialization.XmlElementAttribute("player", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [XmlElement("player", Form = XmlSchemaForm.Unqualified)]
         public player[] items { get; set; }
     }
 
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [XmlType(AnonymousType = true)]
     public class score
     {
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute]
         public string created { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string difficulty { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string platform { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute("score")]
+
+        [XmlAttribute("score")]
         public string value { get; set; }
     }
-
 }

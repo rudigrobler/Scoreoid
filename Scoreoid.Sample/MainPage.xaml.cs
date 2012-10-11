@@ -1,31 +1,17 @@
-﻿using Scoreoid.UI;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System;
+using Scoreoid.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Scoreoid.Sample
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         /// <summary>
@@ -49,23 +35,21 @@ namespace Scoreoid.Sample
             {
                 getLEaderboard.IsEnabled = false;
 
-                var leaderboard = await ScoreoidManager.GetLeaderboard();
+                Leaderboard leaderboard = await ScoreoidManager.GetLeaderboard();
                 string leaderboardDebugString = string.Empty;
-                foreach (var item in leaderboard.Items)
+                foreach (LeaderboardItem item in leaderboard.Items)
                 {
                     leaderboardDebugString += item.Rank + " - " + item.Player + " - " + item.Score + Environment.NewLine;
                 }
 
-                MessageDialog dlg = new MessageDialog(leaderboardDebugString);
-                dlg.Title = "LEADERBOARD";
+                var dlg = new MessageDialog(leaderboardDebugString) {Title = "LEADERBOARD"};
                 dlg.ShowAsync();
 
                 getLEaderboard.IsEnabled = true;
             }
             catch (Exception ex)
             {
-                MessageDialog dlg = new MessageDialog(ex.Message);
-                dlg.Title = "ERROR";
+                var dlg = new MessageDialog(ex.Message) {Title = "ERROR"};
                 dlg.ShowAsync();
 
                 getLEaderboard.IsEnabled = true;
@@ -81,10 +65,9 @@ namespace Scoreoid.Sample
                 score.IsEnabled = false;
 
                 int _score = int.Parse(score.Text);
-                var response = await ScoreoidManager.CreateScore(_score);
+                string response = await ScoreoidManager.CreateScore(_score);
 
-                MessageDialog dlg = new MessageDialog(response);
-                dlg.Title = "SCORE";
+                var dlg = new MessageDialog(response) {Title = "SCORE"};
                 dlg.ShowAsync();
 
                 createScore.IsEnabled = true;
@@ -92,8 +75,7 @@ namespace Scoreoid.Sample
             }
             catch (Exception ex)
             {
-                MessageDialog dlg = new MessageDialog(ex.Message);
-                dlg.Title = "ERROR";
+                var dlg = new MessageDialog(ex.Message) {Title = "ERROR"};
                 dlg.ShowAsync();
 
                 createScore.IsEnabled = true;

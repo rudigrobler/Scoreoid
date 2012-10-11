@@ -1,38 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net.Http;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace Scoreoid.UI.Primitives
 {
-    /// <summary>
-    /// A basic page that provides characteristics common to most applications.
-    /// </summary>
     public sealed partial class ScoreoidCreatePlayerPage : Page
     {
         public ScoreoidCreatePlayerPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
             save.IsEnabled = false;
 
-            player player = new player();
+            var player = new player();
 
             if (!string.IsNullOrEmpty(email.Text))
             {
@@ -49,8 +34,8 @@ namespace Scoreoid.UI.Primitives
             if (!string.IsNullOrEmpty(lastName.Text))
             {
                 player.last_name = lastName.Text;
-            }            
-            
+            }
+
             if (!string.IsNullOrEmpty(username.Text))
             {
                 player.username = username.Text;
@@ -59,26 +44,23 @@ namespace Scoreoid.UI.Primitives
                 {
                     string response = await ScoreoidManager.ScoreoidClient.CreatePlayerAsync(player);
 
-                    MessageDialog dlg = new MessageDialog(response);
-                    dlg.Title = "PLAYER";
+                    var dlg = new MessageDialog(response) {Title = "PLAYER"};
                     await dlg.ShowAsync();
 
-                    this.Frame.GoBack();
+                    Frame.GoBack();
 
                     save.IsEnabled = true;
                 }
                 catch (ScoreoidException ex)
                 {
-                    MessageDialog dlg = new MessageDialog(ex.Message);
-                    dlg.Title = "ERROR";
+                    var dlg = new MessageDialog(ex.Message) {Title = "ERROR"};
                     dlg.ShowAsync();
 
                     save.IsEnabled = true;
                 }
                 catch (HttpRequestException ex)
                 {
-                    var dlg = new MessageDialog(ex.Message);
-                    dlg.Title = "ERROR";
+                    var dlg = new MessageDialog(ex.Message) {Title = "ERROR"};
                     dlg.ShowAsync();
 
                     save.IsEnabled = true;
@@ -86,8 +68,7 @@ namespace Scoreoid.UI.Primitives
             }
             else
             {
-                MessageDialog dlg = new MessageDialog("username is required");
-                dlg.Title = "ERROR";
+                var dlg = new MessageDialog("username is required") {Title = "ERROR"};
                 dlg.ShowAsync();
 
                 save.IsEnabled = true;
@@ -98,8 +79,7 @@ namespace Scoreoid.UI.Primitives
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.GoBack();
+            Frame.GoBack();
         }
-
     }
 }

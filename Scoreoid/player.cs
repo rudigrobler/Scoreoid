@@ -1,98 +1,131 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace Scoreoid
 {
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "", IsNullable = false)]
     public class players
     {
-        [System.Xml.Serialization.XmlElementAttribute("player", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [XmlElement("player", Form = XmlSchemaForm.Unqualified)]
         public player[] items { get; set; }
     }
 
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [XmlType(AnonymousType = true)]
     public class player
     {
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute]
         public string username { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string password { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string unique_id { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string first_name { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string last_name { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string email { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string created { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string updated { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string bonus { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string achievements { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string best_score { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string gold { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string money { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string kills { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string lives { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string time_played { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string unlocked_levels { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string unlocked_items { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string inventory { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string last_level { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string current_level { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string current_time { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string current_bonus { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string current_kills { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string current_achievements { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string current_gold { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string current_unlocked_levels { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string current_unlocked_items { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string current_lifes { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string xp { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string energy { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string boost { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string latitude { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string longitude { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string game_state { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string platform { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string rank { get; set; }
 
-        [System.Xml.Serialization.XmlElementAttribute("score", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [XmlElement("score", Form = XmlSchemaForm.Unqualified)]
         public score[] scores { get; set; }
     }
 }

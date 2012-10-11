@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using System.Reflection;
 
 namespace Scoreoid
 {
     public class ScoreoidClient
     {
-        private string api_key;
-        private string game_id;
-        private string response = "XML"; // Currently only support XML
+        private const string response = "XML"; // Currently only support XML
+        private static readonly Regex ErrorRegex = new Regex(@"<error\b[^>]*>(.*?)</error>", RegexOptions.Singleline);
+
+        private static readonly Regex SuccessRegex = new Regex(@"<success\b[^>]*>(.*?)</success>",
+                                                               RegexOptions.Singleline);
+
+        private readonly string api_key;
+        private readonly string game_id;
 
         public ScoreoidClient(string api_key, string game_id)
         {
             this.api_key = api_key;
-            this.game_id = game_id;            
+            this.game_id = game_id;
         }
-        
-        private static readonly Regex ErrorRegex = new Regex(@"<error\b[^>]*>(.*?)</error>", RegexOptions.Singleline);
-        private static readonly Regex SuccessRegex = new Regex(@"<success\b[^>]*>(.*?)</success>", RegexOptions.Singleline);
-        private static readonly Regex PlayersRegex = new Regex(@"<players\b[^>]*>(.*?)</players>", RegexOptions.Singleline);
 
         public async Task<string> CreateScoreAsync(string username, int score)
         {
@@ -37,10 +34,10 @@ namespace Scoreoid
             post_data["username"] = username;
             post_data["score"] = score.ToString();
 
-            string uri = "https://www.scoreoid.com/api/createScore";
+            const string uri = "https://www.scoreoid.com/api/createScore";
             string post_response = await ScoreoidPostAsStringAsync(uri, post_data);
 
-            var successRegex = SuccessRegex.Match(post_response);
+            Match successRegex = SuccessRegex.Match(post_response);
             if (successRegex.Success)
             {
                 return successRegex.Value.TrimResponse("success");
@@ -56,12 +53,12 @@ namespace Scoreoid
             post_data["game_id"] = game_id;
             post_data["response"] = response;
 
-            post_data.Inject<player>(player);
+            post_data.Inject(player);
 
-            string uri = "https://www.scoreoid.com/api/createPlayer";
+            const string uri = "https://www.scoreoid.com/api/createPlayer";
             string post_response = await ScoreoidPostAsStringAsync(uri, post_data);
 
-            var successRegex = SuccessRegex.Match(post_response);
+            Match successRegex = SuccessRegex.Match(post_response);
             if (successRegex.Success)
             {
                 return successRegex.Value.TrimResponse("success");
@@ -82,7 +79,7 @@ namespace Scoreoid
             if (!string.IsNullOrEmpty(email))
                 post_data["email"] = email;
 
-            string uri = "https://www.scoreoid.com/api/getPlayer";
+            const string uri = "https://www.scoreoid.com/api/getPlayer";
 
             return await ScoreoidPostAsync<players>(uri, post_data);
         }
@@ -97,27 +94,26 @@ namespace Scoreoid
             post_data["order"] = order;
             post_data["limit"] = limit.ToString();
 
-            string uri = "https://www.scoreoid.com/api/getBestScores";
+            const string uri = "https://www.scoreoid.com/api/getBestScores";
 
             return await ScoreoidPostAsync<scores>(uri, post_data);
         }
 
         #region POST
 
-        private async Task<T> ScoreoidPostAsync<T>(string uri, Dictionary<string, string> post_data) 
+        private async Task<T> ScoreoidPostAsync<T>(string uri, Dictionary<string, string> post_data)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(T));
-            return (T)serializer.Deserialize(await ScoreoidPostAsStreamAsync(uri, post_data));
+            var serializer = new XmlSerializer(typeof (T));
+            return (T) serializer.Deserialize(await ScoreoidPostAsStreamAsync(uri, post_data));
         }
 
         private async Task<Stream> ScoreoidPostAsStreamAsync(string uri, Dictionary<string, string> post_data)
         {
-            HttpClientHandler handler = new HttpClientHandler();
-            handler.Proxy = WebRequest.DefaultWebProxy;
-            HttpClient client = new HttpClient(handler);
+            var handler = new HttpClientHandler {Proxy = WebRequest.DefaultWebProxy};
+            var client = new HttpClient(handler);
 
-            var responseMessage = await client.PostAsync(uri, new FormUrlEncodedContent(post_data));
-            var error = ErrorRegex.Match(await responseMessage.Content.ReadAsStringAsync());
+            HttpResponseMessage responseMessage = await client.PostAsync(uri, new FormUrlEncodedContent(post_data));
+            Match error = ErrorRegex.Match(await responseMessage.Content.ReadAsStringAsync());
             if (error.Success)
             {
                 throw new ScoreoidException(error.Value.TrimResponse("error"));
@@ -128,14 +124,13 @@ namespace Scoreoid
 
         private async Task<string> ScoreoidPostAsStringAsync(string uri, Dictionary<string, string> post_data)
         {
-            HttpClientHandler handler = new HttpClientHandler();
-            handler.Proxy = WebRequest.DefaultWebProxy;
-            HttpClient client = new HttpClient(handler);
+            var handler = new HttpClientHandler {Proxy = WebRequest.DefaultWebProxy};
+            var client = new HttpClient(handler);
 
-            var responseMessage = await client.PostAsync(uri, new FormUrlEncodedContent(post_data));
-            var responseMessageContent = await responseMessage.Content.ReadAsStringAsync();
-        
-            var errorRegex = ErrorRegex.Match(responseMessageContent);
+            HttpResponseMessage responseMessage = await client.PostAsync(uri, new FormUrlEncodedContent(post_data));
+            string responseMessageContent = await responseMessage.Content.ReadAsStringAsync();
+
+            Match errorRegex = ErrorRegex.Match(responseMessageContent);
             if (errorRegex.Success)
             {
                 throw new ScoreoidException(errorRegex.Value.TrimResponse("error"));

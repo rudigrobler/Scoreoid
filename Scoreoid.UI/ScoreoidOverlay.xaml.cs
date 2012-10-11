@@ -1,21 +1,8 @@
 ﻿using Scoreoid.UI.Primitives;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace Scoreoid.UI
 {
@@ -23,9 +10,9 @@ namespace Scoreoid.UI
     {
         public ScoreoidOverlay()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            Loaded += ScoreoidOverlay_Loaded;            
+            Loaded += ScoreoidOverlay_Loaded;
         }
 
         public void Refresh()
@@ -35,27 +22,29 @@ namespace Scoreoid.UI
 
             if (string.IsNullOrEmpty(ScoreoidManager.username))
             {
-                Visibility = Windows.UI.Xaml.Visibility.Visible;
+                Visibility = Visibility.Visible;
             }
             else
             {
-                Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                Visibility = Visibility.Collapsed;
             }
         }
 
-        void ScoreoidOverlay_Loaded(object sender, RoutedEventArgs e)
+        private void ScoreoidOverlay_Loaded(object sender, RoutedEventArgs e)
         {
             Refresh();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            Visibility = Visibility.Collapsed;
         }
 
         private void CreatePlayer_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(ScoreoidCreatePlayerPage));
+            var frame = Window.Current.Content as Frame;
+            if (frame != null)
+                frame.Navigate(typeof (ScoreoidCreatePlayerPage));
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -67,12 +56,11 @@ namespace Scoreoid.UI
                 {
                     ScoreoidManager.password = password.Password;
                 }
-                Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                Visibility = Visibility.Collapsed;
             }
             else
             {
-                MessageDialog dlg = new MessageDialog("Please enter a valid scoreoid username and/or password");
-                dlg.Title = "ERROR";
+                var dlg = new MessageDialog("Please enter a valid scoreoid username and/or password") {Title = "ERROR"};
                 dlg.ShowAsync();
             }
         }
