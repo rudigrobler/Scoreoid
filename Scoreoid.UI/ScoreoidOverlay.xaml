@@ -54,7 +54,8 @@
             <TextBox x:Name="username" local:TextBoxHelpers.Watermark="username" BorderBrush="#7F000000"
                      BorderThickness="0" Background="White" Height="32" Canvas.Left="10" Canvas.Top="181" Width="389" />
             <PasswordBox x:Name="password" local:TextBoxHelpers.Watermark="password" BorderBrush="#7F000000"
-                         BorderThickness="0" Background="White" Height="32" Canvas.Left="10" Canvas.Top="230" Width="389" />
+                         BorderThickness="0" Background="White" Height="32" Canvas.Left="10" Canvas.Top="230" Width="389" 
+                         KeyDown="password_KeyDown_1"/>
             <Button TabIndex="0" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96"
                     Canvas.Left="488" Canvas.Top="348" Click="SaveButton_Click"
                     Background="{StaticResource ButtonPointerOverBackgroundThemeBrush}" />
