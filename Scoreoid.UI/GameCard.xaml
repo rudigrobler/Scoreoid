@@ -9,21 +9,21 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid Width="350" Height="75" Background="Silver" IsTapEnabled="True" Tapped="Refresh_Tapped">
+    <Grid Width="300" Height="62" Background="Silver" IsTapEnabled="True" Tapped="Refresh_Tapped" VerticalAlignment="Top">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="playerDetails" Visibility="Collapsed" IsHitTestVisible="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Border Margin="12.5" HorizontalAlignment="Left" Background="Gray" Grid.Column="0">
+            <Border Margin="6" HorizontalAlignment="Left" Background="Gray" Grid.Column="0">
                 <Image Width="50" Height="50" x:Name="gravatar" />
             </Border>
-            <StackPanel Grid.Column="1" Margin="0,5,12.5,0">
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="5,0,0,0">
                 <TextBlock x:Name="username" Text="player.username" Style="{StaticResource TitleTextStyle}" />
                 <TextBlock x:Name="best_score" Text="player.best_score" Style="{StaticResource SubtitleTextStyle}" />
             </StackPanel>
         </Grid>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="errorDetails" Visibility="Collapsed" Margin="12.5,10,0,0" IsHitTestVisible="False">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="errorDetails" Visibility="Collapsed" Margin="12,5,0,0" IsHitTestVisible="False">
             <TextBlock Text="Game card not available" Style="{StaticResource TitleTextStyle}" />
             <TextBlock x:Name="errorMessage" Style="{StaticResource SubtitleTextStyle}" />
         </StackPanel>
