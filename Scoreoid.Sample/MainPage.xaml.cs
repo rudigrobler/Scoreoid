@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -40,6 +41,26 @@ namespace Scoreoid.Sample
         {
             ScoreoidManager.ResetSettings();
             scoreoidOverlay.Refresh();
+        }
+
+        private async void GetLeaderboard_Click(object sender, RoutedEventArgs e)
+        {
+            var leaderboard = await ScoreoidManager.GetLeaderboard();
+            string leaderboardDebugString = string.Empty;
+            foreach (var item in leaderboard.Items)
+            {
+                leaderboardDebugString += item.Rank + " - " + item.Player + " - " + item.Score + Environment.NewLine;
+            }
+
+            MessageDialog dlg = new MessageDialog(leaderboardDebugString);
+            dlg.Title = "LEADERBOARD";
+            dlg.ShowAsync();
+        }
+
+        private async void CreateScore_Click(object sender, RoutedEventArgs e)
+        {
+            int _score = int.Parse(score.Text);
+            ScoreoidManager.CreateScore(_score);
         }
     }
 }
