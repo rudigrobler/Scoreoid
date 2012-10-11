@@ -6,6 +6,7 @@ using System.Linq;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,20 +28,29 @@ namespace Scoreoid.UI
             Loaded += ScoreoidOverlay_Loaded;            
         }
 
-        ApplicationDataContainer container;
-
-        void ScoreoidOverlay_Loaded(object sender, RoutedEventArgs e)
+        public void Refresh()
         {
-            container = ApplicationData.Current.LocalSettings.CreateContainer("scoreoid", ApplicationDataCreateDisposition.Always);
-            if (container.Values.ContainsKey("username"))
+            username.Text = string.Empty;
+            password.Password = string.Empty;
+
+            if (string.IsNullOrEmpty(ScoreoidManager.username))
+            {
+                Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+            else
             {
                 Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
         }
 
+        void ScoreoidOverlay_Loaded(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
+
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            rootLayout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         private void CreatePlayer_Tapped(object sender, TappedRoutedEventArgs e)
@@ -50,10 +60,20 @@ namespace Scoreoid.UI
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            container.Values["username"] = username.Text;
-            container.Values["password"] = password.Password;
-
-            rootLayout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            if (!string.IsNullOrEmpty(username.Text))
+            {
+                ScoreoidManager.username = username.Text;
+                if (!string.IsNullOrEmpty(password.Password))
+                {
+                    ScoreoidManager.password = password.Password;
+                }
+                Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+            else
+            {
+                MessageDialog dlg = new MessageDialog("Please enter a valid scoreoid username and/or password");
+                dlg.ShowAsync();
+            }
         }
     }
 }

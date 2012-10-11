@@ -39,6 +39,7 @@ namespace Scoreoid.Sample
         private void ResetSettings_Click(object sender, RoutedEventArgs e)
         {
             ScoreoidManager.ResetSettings();
+            scoreoidOverlay.Refresh();
         }
     }
 }

@@ -75,7 +75,7 @@
             <TextBlock TextWrapping="Wrap" Canvas.Left="11" Canvas.Top="17" Style="{StaticResource SubheaderTextStyle}">
     			<Run Text="Add your scoreoid account"/>
             </TextBlock>
-            <!--<Image Source="Assets/scoreiod_logo.png" Stretch="Fill" Height="60" Canvas.Top="103" Width="200"/>-->
+            <Image Stretch="Fill" Height="60" Canvas.Top="103" Width="200" Source="Assets/scoreiod_logo.png"/>
         </Canvas>
     </Grid>
 </UserControl>
