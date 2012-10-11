@@ -63,7 +63,7 @@
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="longitude" VerticalAlignment="Top" Style="{StaticResource BodyTextStyle}" Grid.Row="13" Margin="0,0,0,6"/>
             <TextBox x:Name="longitude" Width="350" HorizontalAlignment="Left" Grid.Row="14" IsEnabled="False" />
 
-            <Button Content="create" Grid.Row="18" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="96" Margin="0,0,40,46" Click="Save_Click" />
+            <Button Content="create" Grid.Row="18" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="96" Margin="0,0,40,46" Click="Save_Click" x:Name="save" />
         </Grid>
 
         <VisualStateManager.VisualStateGroups>

@@ -30,6 +30,8 @@ namespace Scoreoid.UI.Primitives
 
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
+            save.IsEnabled = false;
+
             player player = new player();
 
             if (!string.IsNullOrEmpty(email.Text))
@@ -58,21 +60,28 @@ namespace Scoreoid.UI.Primitives
                     string response = await ScoreoidManager.ScoreoidClient.CreatePlayer(player);
 
                     MessageDialog dlg = new MessageDialog(response);
+                    dlg.Title = "PLAYER";
                     await dlg.ShowAsync();
 
                     this.Frame.GoBack();
+
+                    save.IsEnabled = true;
                 }
                 catch (ScoreoidException ex)
                 {
                     MessageDialog dlg = new MessageDialog(ex.Message);
                     dlg.Title = "ERROR";
                     dlg.ShowAsync();
+
+                    save.IsEnabled = true;
                 }
                 catch (HttpRequestException ex)
                 {
                     var dlg = new MessageDialog(ex.Message);
                     dlg.Title = "ERROR";
                     dlg.ShowAsync();
+
+                    save.IsEnabled = true;
                 }
             }
             else
@@ -80,7 +89,11 @@ namespace Scoreoid.UI.Primitives
                 MessageDialog dlg = new MessageDialog("username is required");
                 dlg.Title = "ERROR";
                 dlg.ShowAsync();
+
+                save.IsEnabled = true;
             }
+
+            save.IsEnabled = true;
         }
 
         private void GoBack_Click(object sender, RoutedEventArgs e)

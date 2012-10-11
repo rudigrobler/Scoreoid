@@ -45,22 +45,62 @@ namespace Scoreoid.Sample
 
         private async void GetLeaderboard_Click(object sender, RoutedEventArgs e)
         {
-            var leaderboard = await ScoreoidManager.GetLeaderboard();
-            string leaderboardDebugString = string.Empty;
-            foreach (var item in leaderboard.Items)
+            try
             {
-                leaderboardDebugString += item.Rank + " - " + item.Player + " - " + item.Score + Environment.NewLine;
-            }
+                getLEaderboard.IsEnabled = false;
 
-            MessageDialog dlg = new MessageDialog(leaderboardDebugString);
-            dlg.Title = "LEADERBOARD";
-            dlg.ShowAsync();
+                var leaderboard = await ScoreoidManager.GetLeaderboard();
+                string leaderboardDebugString = string.Empty;
+                foreach (var item in leaderboard.Items)
+                {
+                    leaderboardDebugString += item.Rank + " - " + item.Player + " - " + item.Score + Environment.NewLine;
+                }
+
+                MessageDialog dlg = new MessageDialog(leaderboardDebugString);
+                dlg.Title = "LEADERBOARD";
+                dlg.ShowAsync();
+
+                getLEaderboard.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageDialog dlg = new MessageDialog(ex.Message);
+                dlg.Title = "ERROR";
+                dlg.ShowAsync();
+
+                getLEaderboard.IsEnabled = true;
+            }
+            getLEaderboard.IsEnabled = true;
         }
 
         private async void CreateScore_Click(object sender, RoutedEventArgs e)
         {
-            int _score = int.Parse(score.Text);
-            ScoreoidManager.CreateScore(_score);
+            try
+            {
+                createScore.IsEnabled = false;
+                score.IsEnabled = false;
+
+                int _score = int.Parse(score.Text);
+                var response = await ScoreoidManager.CreateScore(_score);
+
+                MessageDialog dlg = new MessageDialog(response);
+                dlg.Title = "SCORE";
+                dlg.ShowAsync();
+
+                createScore.IsEnabled = true;
+                score.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageDialog dlg = new MessageDialog(ex.Message);
+                dlg.Title = "ERROR";
+                dlg.ShowAsync();
+
+                createScore.IsEnabled = true;
+                score.IsEnabled = true;
+            }
+            createScore.IsEnabled = true;
+            score.IsEnabled = true;
         }
     }
 }

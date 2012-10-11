@@ -11,11 +11,11 @@
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="TEST SCOREOID API" FontFamily="Segoe WP Black" FontWeight="ExtraBlack" VerticalAlignment="Center" Margin="0,0,0,12" TextAlignment="Center" FontSize="18" />
-            <Button Width="200" Content="ResetSettings()" Click="ResetSettings_Click" />
-            <Button Width="200" Content="GetLeaderboard()" Click="GetLeaderboard_Click" />
-            <TextBlock Text="Score" />
+            <Button x:Name="resetSettings" Width="200" Content="ResetSettings()" Click="ResetSettings_Click" />
+            <Button x:Name="getLEaderboard" Width="200" Content="GetLeaderboard()" Click="GetLeaderboard_Click" />
+            <TextBlock Text="Score" Margin="0,12,0,0" />
             <TextBox Text="100" x:Name="score" Width="200" />
-            <Button Width="200" Content="CreateScore()" Click="CreateScore_Click" />
+            <Button x:Name="createScore" Width="200" Content="CreateScore()" Click="CreateScore_Click" />
         </StackPanel>
         <scoreoid:GameCard HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,24,24,0" />
         <scoreoid:ScoreoidOverlay d:IsHidden="True" x:Name="scoreoidOverlay" />        

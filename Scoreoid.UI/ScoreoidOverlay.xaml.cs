@@ -72,6 +72,7 @@ namespace Scoreoid.UI
             else
             {
                 MessageDialog dlg = new MessageDialog("Please enter a valid scoreoid username and/or password");
+                dlg.Title = "ERROR";
                 dlg.ShowAsync();
             }
         }
