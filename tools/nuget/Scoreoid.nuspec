@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <version>1.0.0.0</version>
+    <version>1.0.0.1</version>
     <authors>Rudi Grobler</authors>
     <owners>Rudi Grobler</owners>
     <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
     <projectUrl>https://github.com/rudigrobler/Scoreoid.WinRT.Sample</projectUrl>
-    <iconUrl>http://storage2.timheuer.com/CallistoMoon.png</iconUrl>
+    <iconUrl>http://rudigrobler.azurewebsites.net/wp-content/uploads/2012/10/ScoreoidLogo.png</iconUrl>
     <id>Scoreoid</id>
     <title>Scoreoid for Windows 8</title>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
