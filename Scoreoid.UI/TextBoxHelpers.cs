@@ -55,6 +55,18 @@ namespace Scoreoid.UI
                     textBox.GotFocus +=
                         (s, ev) => { watermarks[textBox.GetHashCode()].Visibility = Visibility.Collapsed; };
 
+                    textBox.TextChanged += (s, ev) =>
+                                               {
+                                                   if (textBox.Text.Length == 0)
+                                                   {
+                                                       watermarks[textBox.GetHashCode()].Visibility = Visibility.Visible;
+                                                   }
+                                                   else
+                                                   {
+                                                       watermarks[textBox.GetHashCode()].Visibility = Visibility.Collapsed;
+                                                   }
+                                               };
+
                     textBox.LostFocus += (s, ev) =>
                                              {
                                                  if (textBox.Text.Length > 0)
@@ -74,6 +86,18 @@ namespace Scoreoid.UI
 
                     passwordBox.GotFocus +=
                         (s, ev) => { watermarks[passwordBox.GetHashCode()].Visibility = Visibility.Collapsed; };
+
+                    passwordBox.PasswordChanged += (s, ev) =>
+                    {
+                        if (passwordBox.Password.Length == 0)
+                        {
+                            watermarks[passwordBox.GetHashCode()].Visibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            watermarks[passwordBox.GetHashCode()].Visibility = Visibility.Collapsed;
+                        }
+                    };
 
                     passwordBox.LostFocus += (s, ev) =>
                                                  {
@@ -95,5 +119,5 @@ namespace Scoreoid.UI
                 watermarks[control.GetHashCode()].Text = (string) e.NewValue;
             }
         }
-    }
+   }
 }
