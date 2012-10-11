@@ -112,18 +112,22 @@ namespace Scoreoid
 
         private async Task<Stream> ScoreoidPostAsStreamAsync(string uri, Dictionary<string, string> post_data)
         {
-            HttpClientHandler handler = new HttpClientHandler();
-            handler.Proxy = WebRequest.DefaultWebProxy;
-            HttpClient client = new HttpClient(handler);
-
-            var responseMessage = await client.PostAsync(uri, new FormUrlEncodedContent(post_data));
-            var error = ErrorRegex.Match(await responseMessage.Content.ReadAsStringAsync());
-            if (error.Success)
+            using (var handler = new HttpClientHandler())
             {
-                throw new ScoreoidException(error.Value.TrimResponse("error"));
-            }
+                handler.Proxy = WebRequest.DefaultWebProxy;
+                using (var client = new HttpClient(handler))
+                {
+                    //var xmlReader = XmlReader.Create(
+                    var responseMessage = await client.PostAsync(uri, new FormUrlEncodedContent(post_data));
+                    var error = ErrorRegex.Match(await responseMessage.Content.ReadAsStringAsync());
+                    if (error.Success)
+                    {
+                         throw new ScoreoidException(error.Value.TrimResponse("error"));
+                    }
 
-            return await responseMessage.Content.ReadAsStreamAsync();
+                    return await responseMessage.Content.ReadAsStreamAsync();
+                }
+            }        
         }
 
         private async Task<string> ScoreoidPostAsStringAsync(string uri, Dictionary<string, string> post_data)
