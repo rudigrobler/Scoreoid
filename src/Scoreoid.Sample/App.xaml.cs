@@ -1,5 +1,5 @@
 ﻿using System;
-using Scoreoid.UI;
+using ScoreoidUI;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;

@@ -1,5 +1,5 @@
 ﻿using System;
-using Scoreoid.UI;
+using ScoreoidUI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
