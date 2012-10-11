@@ -49,7 +49,8 @@ namespace Scoreoid.UI
                 var container = ApplicationData.Current.LocalSettings.CreateContainer("scoreoid", ApplicationDataCreateDisposition.Always);
                 container.Values["username"] = value;
 
-                Refresh(null, EventArgs.Empty);
+                if (Refresh != null)
+                    Refresh(null, EventArgs.Empty);
             }
         }
 
@@ -72,8 +73,35 @@ namespace Scoreoid.UI
         public static void ResetSettings()
         {
             ApplicationData.Current.LocalSettings.DeleteContainer("scoreoid");
-            Refresh(null, EventArgs.Empty);
+
+            if (Refresh != null)
+                Refresh(null, EventArgs.Empty);
         }
 
+        public static async Task<string> CreateScore(int score)
+        {
+            var _score = await ScoreoidClient.CreateScore(username, score);
+
+            if (Refresh != null)
+                Refresh(null, EventArgs.Empty);
+
+            return _score;
+        }
+
+        public static async Task<Leaderboard> GetLeaderboard(string order_by = "score", string order = "desc", int limit = 10)
+        {
+            Leaderboard leaderboard = new Leaderboard();
+            var scores = await ScoreoidClient.GetBestScores(order_by, order, limit);
+            int rank = 1;
+            leaderboard.Items = (from _ in scores.items
+                                    select new LeaderboardItem()
+                                        {
+                                            Rank = rank++,
+                                            Player = _.username,
+                                            Score = _.scores.First().value
+                                        }).ToArray();
+
+            return leaderboard;
+        }
     }
 }
