@@ -1,4 +1,3 @@
-
 <Page
    x:Name="pageRoot"
    x:Class="ScoreoidUI.ScoreoidCreatePlayerPage"
@@ -9,86 +8,199 @@
    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
    mc:Ignorable="d">
    <Page.Resources>
-      <Style x:Key="BasicTextStyle" TargetType="TextBlock">
-         <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
-         <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
-         <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
-         <Setter Property="TextTrimming" Value="WordEllipsis"/>
-         <Setter Property="TextWrapping" Value="Wrap"/>
-         <Setter Property="Typography.StylisticSet20" Value="True"/>
-         <Setter Property="Typography.DiscretionaryLigatures" Value="True"/>
-         <Setter Property="Typography.CaseSensitiveForms" Value="True"/>
+      <Style
+         x:Key="BasicTextStyle"
+         TargetType="TextBlock">
+         <Setter
+            Property="Foreground"
+            Value="{StaticResource ApplicationForegroundThemeBrush}" />
+         <Setter
+            Property="FontSize"
+            Value="{StaticResource ControlContentThemeFontSize}" />
+         <Setter
+            Property="FontFamily"
+            Value="{StaticResource ContentControlThemeFontFamily}" />
+         <Setter
+            Property="TextTrimming"
+            Value="WordEllipsis" />
+         <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
+         <Setter
+            Property="Typography.StylisticSet20"
+            Value="True" />
+         <Setter
+            Property="Typography.DiscretionaryLigatures"
+            Value="True" />
+         <Setter
+            Property="Typography.CaseSensitiveForms"
+            Value="True" />
       </Style>
-      <Style x:Key="BaselineTextStyle" BasedOn="{StaticResource BasicTextStyle}" TargetType="TextBlock">
-         <Setter Property="LineHeight" Value="20"/>
-         <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
-   <!-- Properly align text along its baseline -->
-         <Setter Property="RenderTransform">
+      <Style
+         x:Key="BaselineTextStyle"
+         BasedOn="{StaticResource BasicTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="LineHeight"
+            Value="20" />
+         <Setter
+            Property="LineStackingStrategy"
+            Value="BlockLineHeight" />
+         <Setter
+            Property="RenderTransform">
             <Setter.Value>
-               <TranslateTransform X="-1" Y="4"/>
+               <TranslateTransform
+                  X="-1"
+                  Y="4" />
             </Setter.Value>
          </Setter>
       </Style>
-      <Style x:Key="HeaderTextStyle" BasedOn="{StaticResource BaselineTextStyle}" TargetType="TextBlock">
-         <Setter Property="FontSize" Value="56"/>
-         <Setter Property="FontWeight" Value="Light"/>
-         <Setter Property="LineHeight" Value="40"/>
-         <Setter Property="RenderTransform">
+      <Style
+         x:Key="HeaderTextStyle"
+         BasedOn="{StaticResource BaselineTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="FontSize"
+            Value="56" />
+         <Setter
+            Property="FontWeight"
+            Value="Light" />
+         <Setter
+            Property="LineHeight"
+            Value="40" />
+         <Setter
+            Property="RenderTransform">
             <Setter.Value>
-               <TranslateTransform X="-2" Y="8"/>
+               <TranslateTransform
+                  X="-2"
+                  Y="8" />
             </Setter.Value>
          </Setter>
       </Style>
-      <Style x:Key="SubheaderTextStyle" BasedOn="{StaticResource BaselineTextStyle}" TargetType="TextBlock">
-         <Setter Property="FontSize" Value="26.667"/>
-         <Setter Property="FontWeight" Value="Light"/>
-         <Setter Property="LineHeight" Value="30"/>
-         <Setter Property="RenderTransform">
+      <Style
+         x:Key="SubheaderTextStyle"
+         BasedOn="{StaticResource BaselineTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="FontSize"
+            Value="26.667" />
+         <Setter
+            Property="FontWeight"
+            Value="Light" />
+         <Setter
+            Property="LineHeight"
+            Value="30" />
+         <Setter
+            Property="RenderTransform">
             <Setter.Value>
-               <TranslateTransform X="-1" Y="6"/>
+               <TranslateTransform
+                  X="-1"
+                  Y="6" />
             </Setter.Value>
          </Setter>
       </Style>
-      <Style x:Key="BodyTextStyle" BasedOn="{StaticResource BaselineTextStyle}" TargetType="TextBlock">
-         <Setter Property="FontWeight" Value="SemiLight"/>
+      <Style
+         x:Key="BodyTextStyle"
+         BasedOn="{StaticResource BaselineTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="FontWeight"
+            Value="SemiLight" />
       </Style>
-      <Style x:Key="PageHeaderTextStyle" BasedOn="{StaticResource HeaderTextStyle}" TargetType="TextBlock">
-         <Setter Property="TextWrapping" Value="NoWrap"/>
-         <Setter Property="VerticalAlignment" Value="Bottom"/>
-         <Setter Property="Margin" Value="0,0,30,40"/>
+      <Style
+         x:Key="PageHeaderTextStyle"
+         BasedOn="{StaticResource HeaderTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="TextWrapping"
+            Value="NoWrap" />
+         <Setter
+            Property="VerticalAlignment"
+            Value="Bottom" />
+         <Setter
+            Property="Margin"
+            Value="0,0,30,40" />
       </Style>
-      <Style x:Key="PageSubheaderTextStyle" BasedOn="{StaticResource SubheaderTextStyle}" TargetType="TextBlock">
-         <Setter Property="TextWrapping" Value="NoWrap"/>
-         <Setter Property="VerticalAlignment" Value="Bottom"/>
-         <Setter Property="Margin" Value="0,0,0,40"/>
+      <Style
+         x:Key="PageSubheaderTextStyle"
+         BasedOn="{StaticResource SubheaderTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="TextWrapping"
+            Value="NoWrap" />
+         <Setter
+            Property="VerticalAlignment"
+            Value="Bottom" />
+         <Setter
+            Property="Margin"
+            Value="0,0,0,40" />
       </Style>
-      <Style x:Key="SnappedPageHeaderTextStyle" BasedOn="{StaticResource PageSubheaderTextStyle}" TargetType="TextBlock">
-         <Setter Property="Margin" Value="0,0,18,40"/>
+      <Style
+         x:Key="SnappedPageHeaderTextStyle"
+         BasedOn="{StaticResource PageSubheaderTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="Margin"
+            Value="0,0,18,40" />
       </Style>
-      <Style x:Key="BackButtonStyle" TargetType="Button">
-         <Setter Property="MinWidth" Value="0"/>
-         <Setter Property="Width" Value="48"/>
-         <Setter Property="Height" Value="48"/>
-         <Setter Property="Margin" Value="36,0,36,36"/>
-         <Setter Property="VerticalAlignment" Value="Bottom"/>
-         <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
-         <Setter Property="FontWeight" Value="Normal"/>
-         <Setter Property="FontSize" Value="56"/>
-         <Setter Property="AutomationProperties.AutomationId" Value="BackButton"/>
-         <Setter Property="AutomationProperties.Name" Value="Back"/>
-         <Setter Property="AutomationProperties.ItemType" Value="Navigation Button"/>
-         <Setter Property="Template">
+      <Style
+         x:Key="BackButtonStyle"
+         TargetType="Button">
+         <Setter
+            Property="MinWidth"
+            Value="0" />
+         <Setter
+            Property="Width"
+            Value="48" />
+         <Setter
+            Property="Height"
+            Value="48" />
+         <Setter
+            Property="Margin"
+            Value="36,0,36,36" />
+         <Setter
+            Property="VerticalAlignment"
+            Value="Bottom" />
+         <Setter
+            Property="FontFamily"
+            Value="Segoe UI Symbol" />
+         <Setter
+            Property="FontWeight"
+            Value="Normal" />
+         <Setter
+            Property="FontSize"
+            Value="56" />
+         <Setter
+            Property="AutomationProperties.AutomationId"
+            Value="BackButton" />
+         <Setter
+            Property="AutomationProperties.Name"
+            Value="Back" />
+         <Setter
+            Property="AutomationProperties.ItemType"
+            Value="Navigation Button" />
+         <Setter
+            Property="Template">
             <Setter.Value>
-               <ControlTemplate TargetType="Button">
-                  <Grid x:Name="RootGrid">
-                     <Grid Margin="-1,-16,0,0">
-                        <TextBlock x:Name="BackgroundGlyph" Foreground="{StaticResource BackButtonBackgroundThemeBrush}" Text=""/>
-                        <TextBlock x:Name="NormalGlyph" Foreground="{StaticResource BackButtonForegroundThemeBrush}" Text="{StaticResource BackButtonGlyph}"/>
+               <ControlTemplate
+                  TargetType="Button">
+                  <Grid
+                     x:Name="RootGrid">
+                     <Grid
+                        Margin="-1,-16,0,0">
+                        <TextBlock
+                           x:Name="BackgroundGlyph"
+                           Foreground="{StaticResource BackButtonBackgroundThemeBrush}"
+                           Text="" />
+                        <TextBlock
+                           x:Name="NormalGlyph"
+                           Foreground="{StaticResource BackButtonForegroundThemeBrush}"
+                           Text="{StaticResource BackButtonGlyph}" />
                         <TextBlock
                            x:Name="ArrowGlyph"
                            Foreground="{StaticResource BackButtonPressedForegroundThemeBrush}"
                            Opacity="0"
-                           Text=""/>
+                           Text="" />
                      </Grid>
                      <Rectangle
                         x:Name="FocusVisualWhite"
@@ -97,7 +209,7 @@
                         Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}"
                         StrokeDashArray="1,1"
                         StrokeDashOffset="1.5"
-                        StrokeEndLineCap="Square"/>
+                        StrokeEndLineCap="Square" />
                      <Rectangle
                         x:Name="FocusVisualBlack"
                         IsHitTestVisible="False"
@@ -105,62 +217,87 @@
                         Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}"
                         StrokeDashArray="1,1"
                         StrokeDashOffset="0.5"
-                        StrokeEndLineCap="Square"/>
+                        StrokeEndLineCap="Square" />
                      <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup x:Name="CommonStates">
-                           <VisualState x:Name="Normal"/>
-                           <VisualState x:Name="PointerOver">
+                        <VisualStateGroup
+                           x:Name="CommonStates">
+                           <VisualState
+                              x:Name="Normal" />
+                           <VisualState
+                              x:Name="PointerOver">
                               <Storyboard>
-                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackgroundGlyph" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BackButtonPointerOverBackgroundThemeBrush}"/>
+                                 <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="BackgroundGlyph"
+                                    Storyboard.TargetProperty="Foreground">
+                                    <DiscreteObjectKeyFrame
+                                       KeyTime="0"
+                                       Value="{StaticResource BackButtonPointerOverBackgroundThemeBrush}" />
                                  </ObjectAnimationUsingKeyFrames>
-                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalGlyph" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BackButtonPointerOverForegroundThemeBrush}"/>
+                                 <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="NormalGlyph"
+                                    Storyboard.TargetProperty="Foreground">
+                                    <DiscreteObjectKeyFrame
+                                       KeyTime="0"
+                                       Value="{StaticResource BackButtonPointerOverForegroundThemeBrush}" />
                                  </ObjectAnimationUsingKeyFrames>
                               </Storyboard>
                            </VisualState>
-                           <VisualState x:Name="Pressed">
+                           <VisualState
+                              x:Name="Pressed">
                               <Storyboard>
-                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackgroundGlyph" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BackButtonForegroundThemeBrush}"/>
+                                 <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="BackgroundGlyph"
+                                    Storyboard.TargetProperty="Foreground">
+                                    <DiscreteObjectKeyFrame
+                                       KeyTime="0"
+                                       Value="{StaticResource BackButtonForegroundThemeBrush}" />
                                  </ObjectAnimationUsingKeyFrames>
                                  <DoubleAnimation
                                     Duration="0"
                                     Storyboard.TargetName="ArrowGlyph"
                                     Storyboard.TargetProperty="Opacity"
-                                    To="1"/>
+                                    To="1" />
                                  <DoubleAnimation
                                     Duration="0"
                                     Storyboard.TargetName="NormalGlyph"
                                     Storyboard.TargetProperty="Opacity"
-                                    To="0"/>
+                                    To="0" />
                               </Storyboard>
                            </VisualState>
-                           <VisualState x:Name="Disabled">
+                           <VisualState
+                              x:Name="Disabled">
                               <Storyboard>
-                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Visibility">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                 <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="RootGrid"
+                                    Storyboard.TargetProperty="Visibility">
+                                    <DiscreteObjectKeyFrame
+                                       KeyTime="0"
+                                       Value="Collapsed" />
                                  </ObjectAnimationUsingKeyFrames>
                               </Storyboard>
                            </VisualState>
                         </VisualStateGroup>
-                        <VisualStateGroup x:Name="FocusStates">
-                           <VisualState x:Name="Focused">
+                        <VisualStateGroup
+                           x:Name="FocusStates">
+                           <VisualState
+                              x:Name="Focused">
                               <Storyboard>
                                  <DoubleAnimation
                                     Duration="0"
                                     Storyboard.TargetName="FocusVisualWhite"
                                     Storyboard.TargetProperty="Opacity"
-                                    To="1"/>
+                                    To="1" />
                                  <DoubleAnimation
                                     Duration="0"
                                     Storyboard.TargetName="FocusVisualBlack"
                                     Storyboard.TargetProperty="Opacity"
-                                    To="1"/>
+                                    To="1" />
                               </Storyboard>
                            </VisualState>
-                           <VisualState x:Name="Unfocused"/>
-                           <VisualState x:Name="PointerFocused"/>
+                           <VisualState
+                              x:Name="Unfocused" />
+                           <VisualState
+                              x:Name="PointerFocused" />
                         </VisualStateGroup>
                      </VisualStateManager.VisualStateGroups>
                   </Grid>
@@ -168,35 +305,69 @@
             </Setter.Value>
          </Setter>
       </Style>
-      <Style x:Key="PortraitBackButtonStyle" BasedOn="{StaticResource BackButtonStyle}" TargetType="Button">
-         <Setter Property="Margin" Value="26,0,26,36"/>
+      <Style
+         x:Key="PortraitBackButtonStyle"
+         BasedOn="{StaticResource BackButtonStyle}"
+         TargetType="Button">
+         <Setter
+            Property="Margin"
+            Value="26,0,26,36" />
       </Style>
-      <Style x:Key="SnappedBackButtonStyle" TargetType="Button">
-         <Setter Property="MinWidth" Value="0"/>
-         <Setter Property="Margin" Value="20,0,0,0"/>
-         <Setter Property="VerticalAlignment" Value="Bottom"/>
-         <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
-         <Setter Property="FontWeight" Value="Normal"/>
-         <Setter Property="FontSize" Value="26.666"/>
-         <Setter Property="AutomationProperties.AutomationId" Value="BackButton"/>
-         <Setter Property="AutomationProperties.Name" Value="Back"/>
-         <Setter Property="AutomationProperties.ItemType" Value="Navigation Button"/>
-         <Setter Property="Template">
+      <Style
+         x:Key="SnappedBackButtonStyle"
+         TargetType="Button">
+         <Setter
+            Property="MinWidth"
+            Value="0" />
+         <Setter
+            Property="Margin"
+            Value="20,0,0,0" />
+         <Setter
+            Property="VerticalAlignment"
+            Value="Bottom" />
+         <Setter
+            Property="FontFamily"
+            Value="Segoe UI Symbol" />
+         <Setter
+            Property="FontWeight"
+            Value="Normal" />
+         <Setter
+            Property="FontSize"
+            Value="26.666" />
+         <Setter
+            Property="AutomationProperties.AutomationId"
+            Value="BackButton" />
+         <Setter
+            Property="AutomationProperties.Name"
+            Value="Back" />
+         <Setter
+            Property="AutomationProperties.ItemType"
+            Value="Navigation Button" />
+         <Setter
+            Property="Template">
             <Setter.Value>
-               <ControlTemplate TargetType="Button">
+               <ControlTemplate
+                  TargetType="Button">
                   <Grid
                      x:Name="RootGrid"
                      Width="36"
                      Height="36"
                      Margin="-3,0,7,33">
-                     <Grid Margin="-1,-1,0,0">
-                        <TextBlock x:Name="BackgroundGlyph" Foreground="{StaticResource BackButtonBackgroundThemeBrush}" Text=""/>
-                        <TextBlock x:Name="NormalGlyph" Foreground="{StaticResource BackButtonForegroundThemeBrush}" Text="{StaticResource BackButtonSnappedGlyph}"/>
+                     <Grid
+                        Margin="-1,-1,0,0">
+                        <TextBlock
+                           x:Name="BackgroundGlyph"
+                           Foreground="{StaticResource BackButtonBackgroundThemeBrush}"
+                           Text="" />
+                        <TextBlock
+                           x:Name="NormalGlyph"
+                           Foreground="{StaticResource BackButtonForegroundThemeBrush}"
+                           Text="{StaticResource BackButtonSnappedGlyph}" />
                         <TextBlock
                            x:Name="ArrowGlyph"
                            Foreground="{StaticResource BackButtonPressedForegroundThemeBrush}"
                            Opacity="0"
-                           Text=""/>
+                           Text="" />
                      </Grid>
                      <Rectangle
                         x:Name="FocusVisualWhite"
@@ -205,7 +376,7 @@
                         Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}"
                         StrokeDashArray="1,1"
                         StrokeDashOffset="1.5"
-                        StrokeEndLineCap="Square"/>
+                        StrokeEndLineCap="Square" />
                      <Rectangle
                         x:Name="FocusVisualBlack"
                         IsHitTestVisible="False"
@@ -213,62 +384,87 @@
                         Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}"
                         StrokeDashArray="1,1"
                         StrokeDashOffset="0.5"
-                        StrokeEndLineCap="Square"/>
+                        StrokeEndLineCap="Square" />
                      <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup x:Name="CommonStates">
-                           <VisualState x:Name="Normal"/>
-                           <VisualState x:Name="PointerOver">
+                        <VisualStateGroup
+                           x:Name="CommonStates">
+                           <VisualState
+                              x:Name="Normal" />
+                           <VisualState
+                              x:Name="PointerOver">
                               <Storyboard>
-                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackgroundGlyph" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BackButtonPointerOverBackgroundThemeBrush}"/>
+                                 <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="BackgroundGlyph"
+                                    Storyboard.TargetProperty="Foreground">
+                                    <DiscreteObjectKeyFrame
+                                       KeyTime="0"
+                                       Value="{StaticResource BackButtonPointerOverBackgroundThemeBrush}" />
                                  </ObjectAnimationUsingKeyFrames>
-                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalGlyph" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BackButtonPointerOverForegroundThemeBrush}"/>
+                                 <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="NormalGlyph"
+                                    Storyboard.TargetProperty="Foreground">
+                                    <DiscreteObjectKeyFrame
+                                       KeyTime="0"
+                                       Value="{StaticResource BackButtonPointerOverForegroundThemeBrush}" />
                                  </ObjectAnimationUsingKeyFrames>
                               </Storyboard>
                            </VisualState>
-                           <VisualState x:Name="Pressed">
+                           <VisualState
+                              x:Name="Pressed">
                               <Storyboard>
-                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackgroundGlyph" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BackButtonForegroundThemeBrush}"/>
+                                 <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="BackgroundGlyph"
+                                    Storyboard.TargetProperty="Foreground">
+                                    <DiscreteObjectKeyFrame
+                                       KeyTime="0"
+                                       Value="{StaticResource BackButtonForegroundThemeBrush}" />
                                  </ObjectAnimationUsingKeyFrames>
                                  <DoubleAnimation
                                     Duration="0"
                                     Storyboard.TargetName="ArrowGlyph"
                                     Storyboard.TargetProperty="Opacity"
-                                    To="1"/>
+                                    To="1" />
                                  <DoubleAnimation
                                     Duration="0"
                                     Storyboard.TargetName="NormalGlyph"
                                     Storyboard.TargetProperty="Opacity"
-                                    To="0"/>
+                                    To="0" />
                               </Storyboard>
                            </VisualState>
-                           <VisualState x:Name="Disabled">
+                           <VisualState
+                              x:Name="Disabled">
                               <Storyboard>
-                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Visibility">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                 <ObjectAnimationUsingKeyFrames
+                                    Storyboard.TargetName="RootGrid"
+                                    Storyboard.TargetProperty="Visibility">
+                                    <DiscreteObjectKeyFrame
+                                       KeyTime="0"
+                                       Value="Collapsed" />
                                  </ObjectAnimationUsingKeyFrames>
                               </Storyboard>
                            </VisualState>
                         </VisualStateGroup>
-                        <VisualStateGroup x:Name="FocusStates">
-                           <VisualState x:Name="Focused">
+                        <VisualStateGroup
+                           x:Name="FocusStates">
+                           <VisualState
+                              x:Name="Focused">
                               <Storyboard>
                                  <DoubleAnimation
                                     Duration="0"
                                     Storyboard.TargetName="FocusVisualWhite"
                                     Storyboard.TargetProperty="Opacity"
-                                    To="1"/>
+                                    To="1" />
                                  <DoubleAnimation
                                     Duration="0"
                                     Storyboard.TargetName="FocusVisualBlack"
                                     Storyboard.TargetProperty="Opacity"
-                                    To="1"/>
+                                    To="1" />
                               </Storyboard>
                            </VisualState>
-                           <VisualState x:Name="Unfocused"/>
-                           <VisualState x:Name="PointerFocused"/>
+                           <VisualState
+                              x:Name="Unfocused" />
+                           <VisualState
+                              x:Name="PointerFocused" />
                         </VisualStateGroup>
                      </VisualStateManager.VisualStateGroups>
                   </Grid>
@@ -276,59 +472,90 @@
             </Setter.Value>
          </Setter>
       </Style>
-      <Style x:Key="LayoutRootStyle" TargetType="Panel">
-         <Setter Property="Background" Value="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
-         <Setter Property="ChildrenTransitions">
+      <Style
+         x:Key="LayoutRootStyle"
+         TargetType="Panel">
+         <Setter
+            Property="Background"
+            Value="{StaticResource ApplicationPageBackgroundThemeBrush}" />
+         <Setter
+            Property="ChildrenTransitions">
             <Setter.Value>
                <TransitionCollection>
-                  <EntranceThemeTransition/>
+                  <EntranceThemeTransition />
                </TransitionCollection>
             </Setter.Value>
          </Setter>
       </Style>
    </Page.Resources>
-   <Grid Style="{StaticResource LayoutRootStyle}">
+   <Grid
+      Style="{StaticResource LayoutRootStyle}">
       <Grid.RowDefinitions>
-         <RowDefinition Height="140"/>
-         <RowDefinition Height="*"/>
+         <RowDefinition
+            Height="140" />
+         <RowDefinition
+            Height="*" />
       </Grid.RowDefinitions>
       <Grid>
          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition
+               Width="Auto" />
+            <ColumnDefinition
+               Width="*" />
          </Grid.ColumnDefinitions>
          <Button
             x:Name="backButton"
             Click="GoBack_Click"
             IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}"
-            Style="{StaticResource BackButtonStyle}"/>
+            Style="{StaticResource BackButtonStyle}" />
          <TextBlock
             x:Name="pageTitle"
             Grid.Column="1"
             Style="{StaticResource PageHeaderTextStyle}"
-            Text="Account"/>
+            Text="Account" />
       </Grid>
-      <Grid Grid.Row="1" Margin="116,0,0,0">
+      <Grid
+         Grid.Row="1"
+         Margin="116,0,0,0">
          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="Auto" />
+            <RowDefinition
+               Height="*" />
          </Grid.RowDefinitions>
          <TextBlock
             Grid.Row="0"
@@ -337,13 +564,13 @@
             VerticalAlignment="Top"
             Style="{StaticResource BodyTextStyle}"
             Text="username"
-            TextWrapping="Wrap"/>
+            TextWrapping="Wrap" />
          <TextBox
             x:Name="username"
             Width="350"
             Grid.Row="1"
             HorizontalAlignment="Left"
-            Margin="0,3,0,0"/>
+            Margin="0,3,0,0" />
          <TextBlock
             Grid.Row="2"
             HorizontalAlignment="Left"
@@ -351,14 +578,14 @@
             VerticalAlignment="Top"
             Style="{StaticResource BodyTextStyle}"
             Text="password"
-            TextWrapping="Wrap"/>
+            TextWrapping="Wrap" />
          <PasswordBox
             x:Name="password"
             Width="350"
             Grid.Row="3"
             HorizontalAlignment="Left"
             Margin="0,3,0,0"
-            local:TextBoxHelpers.Watermark="optional"/>
+            local:TextBoxHelpers.Watermark="optional" />
          <TextBlock
             Grid.Row="4"
             HorizontalAlignment="Left"
@@ -366,14 +593,14 @@
             VerticalAlignment="Top"
             Style="{StaticResource BodyTextStyle}"
             Text="first name"
-            TextWrapping="Wrap"/>
+            TextWrapping="Wrap" />
          <TextBox
             x:Name="firstName"
             Width="350"
             Grid.Row="5"
             HorizontalAlignment="Left"
             Margin="0,3,0,0"
-            local:TextBoxHelpers.Watermark="optional"/>
+            local:TextBoxHelpers.Watermark="optional" />
          <TextBlock
             Grid.Row="6"
             HorizontalAlignment="Left"
@@ -381,14 +608,14 @@
             VerticalAlignment="Top"
             Style="{StaticResource BodyTextStyle}"
             Text="last name"
-            TextWrapping="Wrap"/>
+            TextWrapping="Wrap" />
          <TextBox
             x:Name="lastName"
             Width="350"
             Grid.Row="7"
             HorizontalAlignment="Left"
             Margin="0,3,0,0"
-            local:TextBoxHelpers.Watermark="optional"/>
+            local:TextBoxHelpers.Watermark="optional" />
          <TextBlock
             Grid.Row="8"
             HorizontalAlignment="Left"
@@ -396,14 +623,14 @@
             VerticalAlignment="Top"
             Style="{StaticResource BodyTextStyle}"
             Text="email"
-            TextWrapping="Wrap"/>
+            TextWrapping="Wrap" />
          <TextBox
             x:Name="email"
             Width="350"
             Grid.Row="9"
             HorizontalAlignment="Left"
             Margin="0,3,0,0"
-            local:TextBoxHelpers.Watermark="optional"/>
+            local:TextBoxHelpers.Watermark="optional" />
          <TextBlock
             Grid.Row="10"
             HorizontalAlignment="Left"
@@ -411,7 +638,7 @@
             VerticalAlignment="Top"
             Style="{StaticResource BodyTextStyle}"
             Text="location"
-            TextWrapping="Wrap"/>
+            TextWrapping="Wrap" />
          <TextBlock
             Grid.Row="11"
             HorizontalAlignment="Left"
@@ -419,14 +646,14 @@
             VerticalAlignment="Top"
             Style="{StaticResource BodyTextStyle}"
             Text="latitude"
-            TextWrapping="Wrap"/>
+            TextWrapping="Wrap" />
          <TextBox
             x:Name="latitude"
             Width="350"
             Grid.Row="12"
             HorizontalAlignment="Left"
             Margin="0,3,0,0"
-            IsEnabled="False"/>
+            IsEnabled="False" />
          <TextBlock
             Grid.Row="13"
             HorizontalAlignment="Left"
@@ -434,14 +661,14 @@
             VerticalAlignment="Top"
             Style="{StaticResource BodyTextStyle}"
             Text="longitude"
-            TextWrapping="Wrap"/>
+            TextWrapping="Wrap" />
          <TextBox
             x:Name="longitude"
             Width="350"
             Grid.Row="14"
             HorizontalAlignment="Left"
             Margin="0,3,0,0"
-            IsEnabled="False"/>
+            IsEnabled="False" />
          <Button
             x:Name="save"
             Width="96"
@@ -450,29 +677,43 @@
             Margin="0,0,40,46"
             VerticalAlignment="Bottom"
             Click="Save_Click"
-            Content="create"/>
+            Content="create" />
       </Grid>
       <VisualStateManager.VisualStateGroups>
-   <!-- Visual states reflect the application's view state -->
-         <VisualStateGroup x:Name="ApplicationViewStates">
-            <VisualState x:Name="FullScreenLandscape"/>
-            <VisualState x:Name="Filled"/>
-   <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
-            <VisualState x:Name="FullScreenPortrait">
+         <VisualStateGroup
+            x:Name="ApplicationViewStates">
+            <VisualState
+               x:Name="FullScreenLandscape" />
+            <VisualState
+               x:Name="Filled" />
+            <VisualState
+               x:Name="FullScreenPortrait">
                <Storyboard>
-                  <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                     <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                  <ObjectAnimationUsingKeyFrames
+                     Storyboard.TargetName="backButton"
+                     Storyboard.TargetProperty="Style">
+                     <DiscreteObjectKeyFrame
+                        KeyTime="0"
+                        Value="{StaticResource PortraitBackButtonStyle}" />
                   </ObjectAnimationUsingKeyFrames>
                </Storyboard>
             </VisualState>
-   <!-- The back button and title have different styles when snapped -->
-            <VisualState x:Name="Snapped">
+            <VisualState
+               x:Name="Snapped">
                <Storyboard>
-                  <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                     <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                  <ObjectAnimationUsingKeyFrames
+                     Storyboard.TargetName="backButton"
+                     Storyboard.TargetProperty="Style">
+                     <DiscreteObjectKeyFrame
+                        KeyTime="0"
+                        Value="{StaticResource SnappedBackButtonStyle}" />
                   </ObjectAnimationUsingKeyFrames>
-                  <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
-                     <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                  <ObjectAnimationUsingKeyFrames
+                     Storyboard.TargetName="pageTitle"
+                     Storyboard.TargetProperty="Style">
+                     <DiscreteObjectKeyFrame
+                        KeyTime="0"
+                        Value="{StaticResource SnappedPageHeaderTextStyle}" />
                   </ObjectAnimationUsingKeyFrames>
                </Storyboard>
             </VisualState>

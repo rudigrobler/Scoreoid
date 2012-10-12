@@ -1,4 +1,3 @@
-
 <UserControl
    x:Class="ScoreoidUI.ScoreoidOverlay"
    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -10,47 +9,96 @@
    d:DesignWidth="700"
    mc:Ignorable="d">
    <UserControl.Resources>
-      <Style x:Key="BasicTextStyle" TargetType="TextBlock">
-         <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
-         <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
-         <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
-         <Setter Property="TextTrimming" Value="WordEllipsis"/>
-         <Setter Property="TextWrapping" Value="Wrap"/>
-         <Setter Property="Typography.StylisticSet20" Value="True"/>
-         <Setter Property="Typography.DiscretionaryLigatures" Value="True"/>
-         <Setter Property="Typography.CaseSensitiveForms" Value="True"/>
+      <Style
+         x:Key="BasicTextStyle"
+         TargetType="TextBlock">
+         <Setter
+            Property="Foreground"
+            Value="{StaticResource ApplicationForegroundThemeBrush}" />
+         <Setter
+            Property="FontSize"
+            Value="{StaticResource ControlContentThemeFontSize}" />
+         <Setter
+            Property="FontFamily"
+            Value="{StaticResource ContentControlThemeFontFamily}" />
+         <Setter
+            Property="TextTrimming"
+            Value="WordEllipsis" />
+         <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
+         <Setter
+            Property="Typography.StylisticSet20"
+            Value="True" />
+         <Setter
+            Property="Typography.DiscretionaryLigatures"
+            Value="True" />
+         <Setter
+            Property="Typography.CaseSensitiveForms"
+            Value="True" />
       </Style>
-      <Style x:Key="BaselineTextStyle" BasedOn="{StaticResource BasicTextStyle}" TargetType="TextBlock">
-         <Setter Property="LineHeight" Value="20"/>
-         <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
-   <!-- Properly align text along its baseline -->
-         <Setter Property="RenderTransform">
+      <Style
+         x:Key="BaselineTextStyle"
+         BasedOn="{StaticResource BasicTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="LineHeight"
+            Value="20" />
+         <Setter
+            Property="LineStackingStrategy"
+            Value="BlockLineHeight" />
+         <Setter
+            Property="RenderTransform">
             <Setter.Value>
-               <TranslateTransform X="-1" Y="4"/>
+               <TranslateTransform
+                  X="-1"
+                  Y="4" />
             </Setter.Value>
          </Setter>
       </Style>
-      <Style x:Key="SubheaderTextStyle" BasedOn="{StaticResource BaselineTextStyle}" TargetType="TextBlock">
-         <Setter Property="FontSize" Value="26.667"/>
-         <Setter Property="FontWeight" Value="Light"/>
-         <Setter Property="LineHeight" Value="30"/>
-         <Setter Property="RenderTransform">
+      <Style
+         x:Key="SubheaderTextStyle"
+         BasedOn="{StaticResource BaselineTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="FontSize"
+            Value="26.667" />
+         <Setter
+            Property="FontWeight"
+            Value="Light" />
+         <Setter
+            Property="LineHeight"
+            Value="30" />
+         <Setter
+            Property="RenderTransform">
             <Setter.Value>
-               <TranslateTransform X="-1" Y="6"/>
+               <TranslateTransform
+                  X="-1"
+                  Y="6" />
             </Setter.Value>
          </Setter>
       </Style>
-      <Style x:Key="SubtitleTextStyle" BasedOn="{StaticResource BaselineTextStyle}" TargetType="TextBlock">
-         <Setter Property="FontWeight" Value="Normal"/>
+      <Style
+         x:Key="SubtitleTextStyle"
+         BasedOn="{StaticResource BaselineTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="FontWeight"
+            Value="Normal" />
       </Style>
    </UserControl.Resources>
-   <Grid x:Name="rootLayout" Background="Transparent">
+   <Grid
+      x:Name="rootLayout"
+      Background="Transparent">
       <Rectangle
          Height="400"
          VerticalAlignment="Center"
          Fill="Black"
-         Stroke="Black"/>
-      <Canvas Width="700" Height="400" Background="Black">
+         Stroke="Black" />
+      <Canvas
+         Width="700"
+         Height="400"
+         Background="Black">
          <TextBlock
             Canvas.Left="13"
             Canvas.Top="63"
@@ -58,7 +106,8 @@
             VerticalAlignment="Top"
             Style="{StaticResource SubtitleTextStyle}"
             TextWrapping="Wrap">
-            <Run Text="scoreoid provide detailed leaderboards, achievements and notifications."/>
+            <Run
+               Text="scoreoid provide detailed leaderboards, achievements and notifications." />
          </TextBlock>
          <TextBox
             x:Name="username"
@@ -69,7 +118,7 @@
             Background="White"
             BorderBrush="#7F000000"
             BorderThickness="0"
-            local:TextBoxHelpers.Watermark="username"/>
+            local:TextBoxHelpers.Watermark="username" />
          <PasswordBox
             x:Name="password"
             Width="389"
@@ -80,7 +129,7 @@
             BorderBrush="#7F000000"
             BorderThickness="0"
             KeyDown="password_KeyDown_1"
-            local:TextBoxHelpers.Watermark="password"/>
+            local:TextBoxHelpers.Watermark="password" />
          <Button
             x:Name="saveButton"
             Width="96"
@@ -91,7 +140,7 @@
             Background="{StaticResource ButtonPointerOverBackgroundThemeBrush}"
             Click="SaveButton_Click"
             Content="Save"
-            TabIndex="0"/>
+            TabIndex="0" />
          <Button
             x:Name="cancelButton"
             Width="96"
@@ -100,7 +149,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="CancelButton_Click"
-            Content="Cancel"/>
+            Content="Cancel" />
          <TextBlock
             x:Name="createPlayerTextBox"
             Canvas.Left="14"
@@ -111,14 +160,16 @@
             Style="{StaticResource SubtitleTextStyle}"
             Tapped="CreatePlayer_Tapped"
             TextWrapping="Wrap">
-            <Run Text="Create a scoreoid account"/>
+            <Run
+               Text="Create a scoreoid account" />
          </TextBlock>
          <TextBlock
             Canvas.Left="11"
             Canvas.Top="17"
             Style="{StaticResource SubheaderTextStyle}"
             TextWrapping="Wrap">
-            <Run Text="Add your scoreoid account"/>
+            <Run
+               Text="Add your scoreoid account" />
          </TextBlock>
          <Image
             x:Name="scoreoidImage"
@@ -126,7 +177,7 @@
             Height="60"
             Canvas.Top="103"
             Source="Assets/scoreiod_logo.png"
-            Stretch="Fill"/>
+            Stretch="Fill" />
       </Canvas>
    </Grid>
 </UserControl>
