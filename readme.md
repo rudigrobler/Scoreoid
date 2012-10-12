@@ -1,4 +1,4 @@
-# scoreoid sample for Windows 8
+# Scoreoid for Windows 8
 
 ## What Is scoreoid?
 
