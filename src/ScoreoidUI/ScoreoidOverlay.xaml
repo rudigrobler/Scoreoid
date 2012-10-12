@@ -1,4 +1,4 @@
-<UserControl
+﻿<UserControl
    x:Class="ScoreoidUI.ScoreoidOverlay"
    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -128,7 +128,7 @@
             Background="White"
             BorderBrush="#7F000000"
             BorderThickness="0"
-            KeyDown="password_KeyDown_1"
+            KeyDown="password_KeyDown"
             local:TextBoxHelpers.Watermark="password" />
          <Button
             x:Name="saveButton"
@@ -150,19 +150,14 @@
             VerticalAlignment="Top"
             Click="CancelButton_Click"
             Content="Cancel" />
-         <TextBlock
-            x:Name="createPlayerTextBox"
-            Canvas.Left="14"
-            Canvas.Top="268"
+         <HyperlinkButton
+            x:Name="createPlayerHyperlink"
+            Canvas.Top="263"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            IsTapEnabled="True"
-            Style="{StaticResource SubtitleTextStyle}"
-            Tapped="CreatePlayer_Tapped"
-            TextWrapping="Wrap">
-            <Run
-               Text="Create a scoreoid account" />
-         </TextBlock>
+            Click="createPlayerHyperlink_Click"
+            Content="Create a scoreoid account"
+            Canvas.Left="-7" />
          <TextBlock
             Canvas.Left="11"
             Canvas.Top="17"

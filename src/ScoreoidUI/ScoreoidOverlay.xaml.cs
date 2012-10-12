@@ -51,18 +51,6 @@ namespace ScoreoidUI
             Visibility = Visibility.Collapsed;
         }
 
-        private async void CreatePlayer_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            if (Window.Current != null)
-            {
-                var frame = Window.Current.Content as Frame;
-                if (frame != null)
-                {
-                    frame.Navigate(typeof(ScoreoidCreatePlayerPage));
-                }
-            }
-        }
-
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(username.Text))
@@ -82,11 +70,23 @@ namespace ScoreoidUI
             }
         }
 
-        private void password_KeyDown_1(object sender, KeyRoutedEventArgs e)
+        private void password_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Enter)
             {
                 SaveButton_Click(sender, new RoutedEventArgs());
+            }
+        }
+
+        private void createPlayerHyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            if (Window.Current != null)
+            {
+                var frame = Window.Current.Content as Frame;
+                if (frame != null)
+                {
+                    frame.Navigate(typeof(ScoreoidCreatePlayerPage));
+                }
             }
         }
     }
