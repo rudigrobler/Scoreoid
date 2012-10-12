@@ -37,6 +37,7 @@ namespace ScoreoidUI
 
         private void ScoreoidManager_Refresh(object sender, EventArgs e)
         {
+            ScoreoidManager.CachedPlayer = null;
             Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { Refresh(); });
         }
 
@@ -50,20 +51,23 @@ namespace ScoreoidUI
             {
                 try
                 {
-                    players player =
-                        await
-                        ScoreoidManager.ScoreoidClient.GetPlayerAsync(ScoreoidManager.username, ScoreoidManager.password);
+                    if (ScoreoidManager.CachedPlayer==null)
+                    {
+                        var _players = await
+                            ScoreoidManager.ScoreoidClient.GetPlayerAsync(ScoreoidManager.username, ScoreoidManager.password);
+                        ScoreoidManager.CachedPlayer = _players.items.First();
+                    }
 
                     inProgress.Visibility = Visibility.Collapsed;
                     errorDetails.Visibility = Visibility.Collapsed;
                     playerDetails.Visibility = Visibility.Visible;
 
-                    username.Text = player.items.First().username;
-                    best_score.Text = player.items.First().best_score;
+                    username.Text = ScoreoidManager.CachedPlayer.username;
+                    best_score.Text = ScoreoidManager.CachedPlayer.best_score;
 
-                    if (!string.IsNullOrEmpty(player.items.First().email))
+                    if (!string.IsNullOrEmpty(ScoreoidManager.CachedPlayer.email))
                     {
-                        var gravatarImage = new BitmapImage(GetGravatarUri(player.items.First().email, 50));
+                        var gravatarImage = new BitmapImage(GetGravatarUri(ScoreoidManager.CachedPlayer.email, 50));
                         gravatar.Source = gravatarImage;
                     }
                 }

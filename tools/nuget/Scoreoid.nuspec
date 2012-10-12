@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <version>1.0.0.2</version>
+    <version>1.0.0.4</version>
     <authors>Rudi Grobler</authors>
     <owners>Rudi Grobler</owners>
     <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
@@ -22,5 +22,12 @@
   <files>
     <file src="..\..\src\Scoreoid\bin\Debug\scoreoid.dll" target="lib\winrt45\scoreoid.dll" />
     <file src="..\..\src\ScoreoidUI\bin\Debug\scoreoidui.dll" target="lib\winrt45\scoreoidui.dll" />
+    <file src="..\..\src\Scoreoid\bin\Debug\scoreoid.pri" target="lib\winrt45\scoreoid.pri" />
+    <file src="..\..\src\ScoreoidUI\bin\Debug\scoreoidui.pri" target="lib\winrt45\scoreoidui.pri" />
+    <file src="..\..\src\ScoreoidUI\GameCard.xaml" target="lib\winrt45\ScoreoidUI\GameCard.xaml" />
+    <file src="..\..\src\ScoreoidUI\ScoreoidCreatePlayerPage.xaml" target="lib\winrt45\ScoreoidUI\ScoreoidCreatePlayerPage.xaml" />
+    <file src="..\..\src\ScoreoidUI\ScoreoidOverlay.xaml" target="lib\winrt45\ScoreoidUI\ScoreoidOverlay.xaml" />
+    <file src="..\..\src\ScoreoidUI\Assets\gravatarDefault.jpg" target="lib\winrt45\ScoreoidUI\Assets\gravatarDefault.jpg" />
+    <file src="..\..\src\ScoreoidUI\Assets\scoreiod_logo.png" target="lib\winrt45\ScoreoidUI\Assets\scoreiod_logo.png" />
   </files>
 </package>

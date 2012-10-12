@@ -1,74 +1,132 @@
-﻿<UserControl x:Class="ScoreoidUI.ScoreoidOverlay" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:ScoreoidUI"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" d:DesignHeight="400"
-             d:DesignWidth="700">
 
-    <UserControl.Resources>
-        <Style x:Key="BasicTextStyle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}" />
-            <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
-            <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
-            <Setter Property="TextTrimming" Value="WordEllipsis" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="Typography.StylisticSet20" Value="True" />
-            <Setter Property="Typography.DiscretionaryLigatures" Value="True" />
-            <Setter Property="Typography.CaseSensitiveForms" Value="True" />
-        </Style>
-
-        <Style x:Key="BaselineTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasicTextStyle}">
-            <Setter Property="LineHeight" Value="20" />
-            <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
-            <!-- Properly align text along its baseline -->
-            <Setter Property="RenderTransform">
-                <Setter.Value>
-                    <TranslateTransform X="-1" Y="4" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="SubheaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
-            <Setter Property="FontSize" Value="26.667" />
-            <Setter Property="FontWeight" Value="Light" />
-            <Setter Property="LineHeight" Value="30" />
-            <Setter Property="RenderTransform">
-                <Setter.Value>
-                    <TranslateTransform X="-1" Y="6" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="SubtitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
-            <Setter Property="FontWeight" Value="Normal" />
-        </Style>
-    </UserControl.Resources>
-
-    <Grid Background="Transparent" x:Name="rootLayout">
-        <Rectangle Fill="Black" Height="400" Stroke="Black" VerticalAlignment="Center" />
-        <Canvas Width="700" Height="400" Background="Black">
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="13"
-                       Canvas.Top="63" Style="{StaticResource SubtitleTextStyle}" LineStackingStrategy="BaselineToBaseline"
-                       UseLayoutRounding="False">
-                <Run Text="scoreoid provide detailed leaderboards, achievements and notifications." />
-            </TextBlock>
-            <TextBox x:Name="username" local:TextBoxHelpers.Watermark="username" BorderBrush="#7F000000"
-                     BorderThickness="0" Background="White" Height="32" Canvas.Left="10" Canvas.Top="181" Width="389" />
-            <PasswordBox x:Name="password" local:TextBoxHelpers.Watermark="password" BorderBrush="#7F000000"
-                         BorderThickness="0" Background="White" Height="32" Canvas.Left="10" Canvas.Top="230" Width="389"
-                         KeyDown="password_KeyDown_1" />
-            <Button TabIndex="0" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96"
-                    Canvas.Left="488" Canvas.Top="348" Click="SaveButton_Click"
-                    Background="{StaticResource ButtonPointerOverBackgroundThemeBrush}" />
-            <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Canvas.Left="598"
-                    Canvas.Top="348" RenderTransformOrigin="0.531,2.053" Click="CancelButton_Click" />
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="14"
-                       Canvas.Top="268" Style="{StaticResource SubtitleTextStyle}" IsTapEnabled="True" Tapped="CreatePlayer_Tapped">
-                <Run Text="Create a scoreoid account" />
-            </TextBlock>
-            <TextBlock TextWrapping="Wrap" Canvas.Left="11" Canvas.Top="17" Style="{StaticResource SubheaderTextStyle}">
-                <Run Text="Add your scoreoid account" />
-            </TextBlock>
-            <Image Stretch="Fill" Height="60" Canvas.Top="103" Width="200" Source="Assets/scoreiod_logo.png" />
-        </Canvas>
-    </Grid>
+<UserControl
+   x:Class="ScoreoidUI.ScoreoidOverlay"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+   xmlns:local="using:ScoreoidUI"
+   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   d:DesignHeight="400"
+   d:DesignWidth="700"
+   mc:Ignorable="d">
+   <UserControl.Resources>
+      <Style x:Key="BasicTextStyle" TargetType="TextBlock">
+         <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
+         <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+         <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
+         <Setter Property="TextTrimming" Value="WordEllipsis"/>
+         <Setter Property="TextWrapping" Value="Wrap"/>
+         <Setter Property="Typography.StylisticSet20" Value="True"/>
+         <Setter Property="Typography.DiscretionaryLigatures" Value="True"/>
+         <Setter Property="Typography.CaseSensitiveForms" Value="True"/>
+      </Style>
+      <Style x:Key="BaselineTextStyle" BasedOn="{StaticResource BasicTextStyle}" TargetType="TextBlock">
+         <Setter Property="LineHeight" Value="20"/>
+         <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
+   <!-- Properly align text along its baseline -->
+         <Setter Property="RenderTransform">
+            <Setter.Value>
+               <TranslateTransform X="-1" Y="4"/>
+            </Setter.Value>
+         </Setter>
+      </Style>
+      <Style x:Key="SubheaderTextStyle" BasedOn="{StaticResource BaselineTextStyle}" TargetType="TextBlock">
+         <Setter Property="FontSize" Value="26.667"/>
+         <Setter Property="FontWeight" Value="Light"/>
+         <Setter Property="LineHeight" Value="30"/>
+         <Setter Property="RenderTransform">
+            <Setter.Value>
+               <TranslateTransform X="-1" Y="6"/>
+            </Setter.Value>
+         </Setter>
+      </Style>
+      <Style x:Key="SubtitleTextStyle" BasedOn="{StaticResource BaselineTextStyle}" TargetType="TextBlock">
+         <Setter Property="FontWeight" Value="Normal"/>
+      </Style>
+   </UserControl.Resources>
+   <Grid x:Name="rootLayout" Background="Transparent">
+      <Rectangle
+         Height="400"
+         VerticalAlignment="Center"
+         Fill="Black"
+         Stroke="Black"/>
+      <Canvas Width="700" Height="400" Background="Black">
+         <TextBlock
+            Canvas.Left="13"
+            Canvas.Top="63"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Style="{StaticResource SubtitleTextStyle}"
+            TextWrapping="Wrap">
+            <Run Text="scoreoid provide detailed leaderboards, achievements and notifications."/>
+         </TextBlock>
+         <TextBox
+            x:Name="username"
+            Width="389"
+            Height="32"
+            Canvas.Left="10"
+            Canvas.Top="181"
+            Background="White"
+            BorderBrush="#7F000000"
+            BorderThickness="0"
+            local:TextBoxHelpers.Watermark="username"/>
+         <PasswordBox
+            x:Name="password"
+            Width="389"
+            Height="32"
+            Canvas.Left="10"
+            Canvas.Top="230"
+            Background="White"
+            BorderBrush="#7F000000"
+            BorderThickness="0"
+            KeyDown="password_KeyDown_1"
+            local:TextBoxHelpers.Watermark="password"/>
+         <Button
+            x:Name="saveButton"
+            Width="96"
+            Canvas.Left="488"
+            Canvas.Top="348"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="{StaticResource ButtonPointerOverBackgroundThemeBrush}"
+            Click="SaveButton_Click"
+            Content="Save"
+            TabIndex="0"/>
+         <Button
+            x:Name="cancelButton"
+            Width="96"
+            Canvas.Left="598"
+            Canvas.Top="348"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="CancelButton_Click"
+            Content="Cancel"/>
+         <TextBlock
+            x:Name="createPlayerTextBox"
+            Canvas.Left="14"
+            Canvas.Top="268"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            IsTapEnabled="True"
+            Style="{StaticResource SubtitleTextStyle}"
+            Tapped="CreatePlayer_Tapped"
+            TextWrapping="Wrap">
+            <Run Text="Create a scoreoid account"/>
+         </TextBlock>
+         <TextBlock
+            Canvas.Left="11"
+            Canvas.Top="17"
+            Style="{StaticResource SubheaderTextStyle}"
+            TextWrapping="Wrap">
+            <Run Text="Add your scoreoid account"/>
+         </TextBlock>
+         <Image
+            x:Name="scoreoidImage"
+            Width="200"
+            Height="60"
+            Canvas.Top="103"
+            Source="Assets/scoreiod_logo.png"
+            Stretch="Fill"/>
+      </Canvas>
+   </Grid>
 </UserControl>

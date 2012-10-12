@@ -27,6 +27,13 @@ namespace ScoreoidUI
             }
         }
 
+        static ScoreoidManager()
+        {
+            CachedPlayer = null;
+        }
+
+        public static player CachedPlayer { get; set; }
+
         public static string username
         {
             get

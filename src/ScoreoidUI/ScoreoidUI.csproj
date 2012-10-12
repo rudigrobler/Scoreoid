@@ -114,6 +114,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DebugHelpers.cs" />
     <Compile Include="GameCard.xaml.cs">
       <DependentUpon>GameCard.xaml</DependentUpon>
     </Compile>

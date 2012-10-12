@@ -1,4 +1,6 @@
-﻿using ScoreoidUI.Primitives;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -33,7 +35,15 @@ namespace ScoreoidUI
 
         private void ScoreoidOverlay_Loaded(object sender, RoutedEventArgs e)
         {
-            Refresh();
+            try
+            {
+                Refresh();
+            }
+            catch(Exception ex)
+            {
+                MessageDialog dlg = new MessageDialog(ex.Message);
+                dlg.ShowAsync();
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -41,11 +51,16 @@ namespace ScoreoidUI
             Visibility = Visibility.Collapsed;
         }
 
-        private void CreatePlayer_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void CreatePlayer_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            var frame = Window.Current.Content as Frame;
-            if (frame != null)
-                frame.Navigate(typeof (ScoreoidCreatePlayerPage));
+            if (Window.Current != null)
+            {
+                var frame = Window.Current.Content as Frame;
+                if (frame != null)
+                {
+                    frame.Navigate(typeof(ScoreoidCreatePlayerPage));
+                }
+            }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -62,6 +77,7 @@ namespace ScoreoidUI
             else
             {
                 var dlg = new MessageDialog("Please enter a valid scoreoid username and/or password") {Title = "ERROR"};
+                dlg.Title = "ERROR";
                 dlg.ShowAsync();
             }
         }
