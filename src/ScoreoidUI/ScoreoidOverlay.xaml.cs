@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -39,9 +37,9 @@ namespace ScoreoidUI
             {
                 Refresh();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageDialog dlg = new MessageDialog(ex.Message);
+                var dlg = new MessageDialog(ex.Message);
                 dlg.ShowAsync();
             }
         }
@@ -85,7 +83,7 @@ namespace ScoreoidUI
                 var frame = Window.Current.Content as Frame;
                 if (frame != null)
                 {
-                    frame.Navigate(typeof(ScoreoidCreatePlayerPage));
+                    frame.Navigate(typeof (ScoreoidCreatePlayerPage));
                 }
             }
         }

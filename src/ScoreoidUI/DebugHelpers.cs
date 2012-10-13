@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
 
 namespace ScoreoidUI
 {
@@ -11,7 +8,7 @@ namespace ScoreoidUI
     {
         public static string ToDebugString(this object o, string label)
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
             builder.AppendLine(label);
 
             IEnumerable<PropertyInfo> properties = o.GetType().GetRuntimeProperties();

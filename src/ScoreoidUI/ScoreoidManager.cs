@@ -13,6 +13,11 @@ namespace ScoreoidUI
 
         private static ScoreoidClient _scoreoidClient;
 
+        static ScoreoidManager()
+        {
+            CachedPlayer = null;
+        }
+
         internal static ScoreoidClient ScoreoidClient
         {
             get
@@ -25,11 +30,6 @@ namespace ScoreoidUI
 
                 return _scoreoidClient;
             }
-        }
-
-        static ScoreoidManager()
-        {
-            CachedPlayer = null;
         }
 
         public static player CachedPlayer { get; set; }

@@ -51,10 +51,11 @@ namespace ScoreoidUI
             {
                 try
                 {
-                    if (ScoreoidManager.CachedPlayer==null)
+                    if (ScoreoidManager.CachedPlayer == null)
                     {
-                        var _players = await
-                            ScoreoidManager.ScoreoidClient.GetPlayerAsync(ScoreoidManager.username, ScoreoidManager.password);
+                        players _players = await
+                                           ScoreoidManager.ScoreoidClient.GetPlayerAsync(ScoreoidManager.username,
+                                                                                         ScoreoidManager.password);
                         ScoreoidManager.CachedPlayer = _players.items.First();
                     }
 
