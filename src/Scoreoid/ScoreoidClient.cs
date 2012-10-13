@@ -67,7 +67,12 @@ namespace Scoreoid
             throw new ScoreoidException();
         }
 
-        public async Task<players> GetPlayerAsync(string username, string password = null, string email = null)
+        public async Task<players> GetPlayerAsync(string username)
+        {
+            return await GetPlayerAsync(username, null);
+        }
+
+        public async Task<players> GetPlayerAsync(string username, string password)
         {
             var post_data = new Dictionary<string, string>();
             post_data["api_key"] = api_key;
@@ -76,15 +81,18 @@ namespace Scoreoid
             post_data["username"] = username;
             if (!string.IsNullOrEmpty(password))
                 post_data["password"] = password;
-            if (!string.IsNullOrEmpty(email))
-                post_data["email"] = email;
 
             const string uri = "https://www.scoreoid.com/api/getPlayer";
 
             return await ScoreoidPostAsync<players>(uri, post_data);
         }
 
-        public async Task<scores> GetBestScoresAsync(string order_by = "score", string order = "desc", int limit = 10)
+        public async Task<scores> GetBestScoresAsync()
+        {
+            return await GetBestScoresAsync("score", "desc", 10);
+        }
+
+        public async Task<scores> GetBestScoresAsync(string order_by, string order, int limit)
         {
             var post_data = new Dictionary<string, string>();
             post_data["api_key"] = api_key;
