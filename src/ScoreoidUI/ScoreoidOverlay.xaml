@@ -105,10 +105,8 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Style="{StaticResource SubtitleTextStyle}"
-            TextWrapping="Wrap">
-            <Run
-               Text="scoreoid provide detailed leaderboards, achievements and notifications." />
-         </TextBlock>
+            TextWrapping="Wrap"
+            Text="scoreoid provide detailed leaderboards, achievements and notifications." />
          <TextBox
             x:Name="username"
             Width="389"
@@ -162,10 +160,8 @@
             Canvas.Left="11"
             Canvas.Top="17"
             Style="{StaticResource SubheaderTextStyle}"
-            TextWrapping="Wrap">
-            <Run
-               Text="Add your scoreoid account" />
-         </TextBlock>
+            TextWrapping="Wrap"
+            Text="Add your scoreoid account" />
          <Image
             x:Name="scoreoidImage"
             Width="200"
