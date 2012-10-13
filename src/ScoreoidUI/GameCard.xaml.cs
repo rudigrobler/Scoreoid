@@ -68,7 +68,7 @@ namespace ScoreoidUI
 
                     if (!string.IsNullOrEmpty(ScoreoidManager.CachedPlayer.email))
                     {
-                        var gravatarImage = new BitmapImage(GetGravatarUri(ScoreoidManager.CachedPlayer.email, 50));
+                        var gravatarImage = new BitmapImage(CreateGravatarUri(ScoreoidManager.CachedPlayer.email, 50));
                         gravatar.Source = gravatarImage;
                     }
                 }
@@ -105,7 +105,7 @@ namespace ScoreoidUI
             }
         }
 
-        private Uri GetGravatarUri(string email, int width)
+        private static Uri CreateGravatarUri(string email, int width)
         {
             if (string.IsNullOrEmpty(email))
                 return null;
@@ -114,22 +114,18 @@ namespace ScoreoidUI
             var sb = new StringBuilder();
 
             sb.Append("http://www.gravatar.com/avatar/");
-            sb.Append(Md5EncodeText(email));
+
+            IBuffer buffer = CryptographicBuffer.ConvertStringToBinary(email, BinaryStringEncoding.Utf8);
+            HashAlgorithmProvider algorithmProvider = HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5);
+            IBuffer hashedBuffer = algorithmProvider.HashData(buffer);
+
+            sb.Append(CryptographicBuffer.EncodeToHexString(hashedBuffer));
             sb.Append(".jpg");
 
             sb.Append("?s=");
             sb.Append(width);
 
             return new Uri(sb.ToString());
-        }
-
-        private string Md5EncodeText(string text)
-        {
-            IBuffer buffer = CryptographicBuffer.ConvertStringToBinary(text, BinaryStringEncoding.Utf8);
-            HashAlgorithmProvider algorithmProvider = HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5);
-
-            IBuffer hashedBuffer = algorithmProvider.HashData(buffer);
-            return CryptographicBuffer.EncodeToHexString(hashedBuffer);
         }
     }
 }

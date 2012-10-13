@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
@@ -8,6 +9,9 @@ namespace ScoreoidUI
     {
         public static string ToDebugString(this object o, string label)
         {
+            if (o == null)
+                throw new ArgumentNullException("o", "o can not be null.");
+
             var builder = new StringBuilder();
             builder.AppendLine(label);
 

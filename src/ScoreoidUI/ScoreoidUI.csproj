@@ -119,6 +119,7 @@
     <Compile Include="GameCard.xaml.cs">
       <DependentUpon>GameCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Leaderboard.cs" />
     <Compile Include="LeaderboardItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

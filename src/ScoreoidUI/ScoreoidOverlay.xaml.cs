@@ -1,5 +1,4 @@
-﻿using System;
-using Windows.System;
+﻿using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,15 +25,7 @@ namespace ScoreoidUI
 
         private void ScoreoidOverlay_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Refresh();
-            }
-            catch (Exception ex)
-            {
-                var dlg = new MessageDialog(ex.Message);
-                dlg.ShowAsync();
-            }
+            Refresh();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

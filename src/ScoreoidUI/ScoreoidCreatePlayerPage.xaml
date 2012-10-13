@@ -9,9 +9,13 @@
    mc:Ignorable="d">
    <Page.Resources>
       <x:String
-         x:Key="BackButtonGlyph">&#xE071;</x:String>
+         x:Key="BackButtonGlyph">
+         &#xE071;
+      </x:String>
       <x:String
-         x:Key="BackButtonSnappedGlyph">&#xE0BA;</x:String>
+         x:Key="BackButtonSnappedGlyph">
+         &#xE0BA;
+      </x:String>
       <Style
          x:Key="BasicTextStyle"
          TargetType="TextBlock">

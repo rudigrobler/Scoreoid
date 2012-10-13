@@ -8,8 +8,8 @@ namespace ScoreoidUI
 {
     public static class ScoreoidManager
     {
-        private static string api_key = string.Empty;
-        private static string game_id = string.Empty;
+        private static string api_key;
+        private static string game_id;
 
         private static ScoreoidClient _scoreoidClient;
 
@@ -100,8 +100,13 @@ namespace ScoreoidUI
             return _score;
         }
 
-        public static async Task<Leaderboard> GetLeaderboard(string order_by = "score", string order = "desc",
-                                                             int limit = 10)
+
+        public static async Task<Leaderboard> GetLeaderboard()
+        {
+            return await GetLeaderboard("score", "desc", 10);
+        }
+
+        public static async Task<Leaderboard> GetLeaderboard(string order_by, string order, int limit)
         {
             var leaderboard = new Leaderboard();
             scores scores = await ScoreoidClient.GetBestScoresAsync(order_by, order, limit);

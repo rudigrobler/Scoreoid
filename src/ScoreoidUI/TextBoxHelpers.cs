@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -11,15 +12,21 @@ namespace ScoreoidUI
             DependencyProperty.RegisterAttached("Watermark", typeof (string), typeof (TextBoxHelpers),
                                                 new PropertyMetadata(string.Empty, OnWatermarkChanged));
 
-        public static Dictionary<int, TextBlock> watermarks = new Dictionary<int, TextBlock>();
+        private static readonly Dictionary<int, TextBlock> watermarks = new Dictionary<int, TextBlock>();
 
         public static string GetWatermark(DependencyObject obj)
         {
+            if (obj == null)
+                throw new ArgumentNullException("obj", "obj can not be null");
+
             return (string) obj.GetValue(WatermarkProperty);
         }
 
         public static void SetWatermark(DependencyObject obj, string value)
         {
+            if (obj == null)
+                throw new ArgumentNullException("obj", "obj can not be null");
+
             obj.SetValue(WatermarkProperty, value);
         }
 
@@ -56,15 +63,21 @@ namespace ScoreoidUI
                     textBox.GotFocus +=
                         (s, ev) => { watermarks[textBox.GetHashCode()].Visibility = Visibility.Collapsed; };
 
-                    textBox.TextChanged += (s, ev) =>
-                                               {
-                                                   watermarks[textBox.GetHashCode()].Visibility = textBox.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
-                                               };
+                    textBox.TextChanged +=
+                        (s, ev) =>
+                            {
+                                watermarks[textBox.GetHashCode()].Visibility = textBox.Text.Length == 0
+                                                                                   ? Visibility.Visible
+                                                                                   : Visibility.Collapsed;
+                            };
 
-                    textBox.LostFocus += (s, ev) =>
-                                             {
-                                                 watermarks[textBox.GetHashCode()].Visibility = textBox.Text.Length > 0 ? Visibility.Collapsed : Visibility.Visible;
-                                             };
+                    textBox.LostFocus +=
+                        (s, ev) =>
+                            {
+                                watermarks[textBox.GetHashCode()].Visibility = textBox.Text.Length > 0
+                                                                                   ? Visibility.Collapsed
+                                                                                   : Visibility.Visible;
+                            };
                 }
 
                 if (isPasswordBox)
@@ -74,15 +87,21 @@ namespace ScoreoidUI
                     passwordBox.GotFocus +=
                         (s, ev) => { watermarks[passwordBox.GetHashCode()].Visibility = Visibility.Collapsed; };
 
-                    passwordBox.PasswordChanged += (s, ev) =>
-                                                       {
-                                                           watermarks[passwordBox.GetHashCode()].Visibility = passwordBox.Password.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
-                                                       };
+                    passwordBox.PasswordChanged +=
+                        (s, ev) =>
+                            {
+                                watermarks[passwordBox.GetHashCode()].Visibility = passwordBox.Password.Length == 0
+                                                                                       ? Visibility.Visible
+                                                                                       : Visibility.Collapsed;
+                            };
 
-                    passwordBox.LostFocus += (s, ev) =>
-                                                 {
-                                                     watermarks[passwordBox.GetHashCode()].Visibility = passwordBox.Password.Length > 0 ? Visibility.Collapsed : Visibility.Visible;
-                                                 };
+                    passwordBox.LostFocus +=
+                        (s, ev) =>
+                            {
+                                watermarks[passwordBox.GetHashCode()].Visibility = passwordBox.Password.Length > 0
+                                                                                       ? Visibility.Collapsed
+                                                                                       : Visibility.Visible;
+                            };
                 }
             }
             else
