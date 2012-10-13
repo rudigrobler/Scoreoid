@@ -58,27 +58,12 @@ namespace ScoreoidUI
 
                     textBox.TextChanged += (s, ev) =>
                                                {
-                                                   if (textBox.Text.Length == 0)
-                                                   {
-                                                       watermarks[textBox.GetHashCode()].Visibility = Visibility.Visible;
-                                                   }
-                                                   else
-                                                   {
-                                                       watermarks[textBox.GetHashCode()].Visibility =
-                                                           Visibility.Collapsed;
-                                                   }
+                                                   watermarks[textBox.GetHashCode()].Visibility = textBox.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
                                                };
 
                     textBox.LostFocus += (s, ev) =>
                                              {
-                                                 if (textBox.Text.Length > 0)
-                                                 {
-                                                     watermarks[textBox.GetHashCode()].Visibility = Visibility.Collapsed;
-                                                 }
-                                                 else
-                                                 {
-                                                     watermarks[textBox.GetHashCode()].Visibility = Visibility.Visible;
-                                                 }
+                                                 watermarks[textBox.GetHashCode()].Visibility = textBox.Text.Length > 0 ? Visibility.Collapsed : Visibility.Visible;
                                              };
                 }
 
@@ -91,30 +76,12 @@ namespace ScoreoidUI
 
                     passwordBox.PasswordChanged += (s, ev) =>
                                                        {
-                                                           if (passwordBox.Password.Length == 0)
-                                                           {
-                                                               watermarks[passwordBox.GetHashCode()].Visibility =
-                                                                   Visibility.Visible;
-                                                           }
-                                                           else
-                                                           {
-                                                               watermarks[passwordBox.GetHashCode()].Visibility =
-                                                                   Visibility.Collapsed;
-                                                           }
+                                                           watermarks[passwordBox.GetHashCode()].Visibility = passwordBox.Password.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
                                                        };
 
                     passwordBox.LostFocus += (s, ev) =>
                                                  {
-                                                     if (passwordBox.Password.Length > 0)
-                                                     {
-                                                         watermarks[passwordBox.GetHashCode()].Visibility =
-                                                             Visibility.Collapsed;
-                                                     }
-                                                     else
-                                                     {
-                                                         watermarks[passwordBox.GetHashCode()].Visibility =
-                                                             Visibility.Visible;
-                                                     }
+                                                     watermarks[passwordBox.GetHashCode()].Visibility = passwordBox.Password.Length > 0 ? Visibility.Collapsed : Visibility.Visible;
                                                  };
                 }
             }

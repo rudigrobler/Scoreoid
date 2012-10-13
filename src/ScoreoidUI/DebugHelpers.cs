@@ -16,14 +16,7 @@ namespace ScoreoidUI
             {
                 builder.Append(property.Name);
                 builder.Append(": ");
-                if (property.GetValue(o) == null)
-                {
-                    builder.AppendLine("null");
-                }
-                else
-                {
-                    builder.AppendLine(property.GetValue(o).ToString());
-                }
+                builder.AppendLine(property.GetValue(o) == null ? "null" : property.GetValue(o).ToString());
             }
 
             return builder.ToString();

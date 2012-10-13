@@ -25,10 +25,7 @@ namespace ScoreoidUI
                 if (string.IsNullOrEmpty(api_key) || string.IsNullOrEmpty(game_id))
                     throw new ScoreoidException("ScoreClient not initialized.");
 
-                if (_scoreoidClient == null)
-                    _scoreoidClient = new ScoreoidClient(api_key, game_id);
-
-                return _scoreoidClient;
+                return _scoreoidClient ?? (_scoreoidClient = new ScoreoidClient(api_key, game_id));
             }
         }
 
@@ -77,10 +74,10 @@ namespace ScoreoidUI
             }
         }
 
-        public static void Initialize(string api_key, string game_id)
+        public static void Initialize(string _api_key, string _game_id)
         {
-            ScoreoidManager.api_key = api_key;
-            ScoreoidManager.game_id = game_id;
+            api_key = _api_key;
+            game_id = _game_id;
         }
 
         public static event EventHandler Refresh;

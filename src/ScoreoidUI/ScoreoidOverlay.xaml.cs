@@ -21,14 +21,7 @@ namespace ScoreoidUI
             username.Text = string.Empty;
             password.Password = string.Empty;
 
-            if (string.IsNullOrEmpty(ScoreoidManager.username))
-            {
-                Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Visibility = Visibility.Collapsed;
-            }
+            Visibility = string.IsNullOrEmpty(ScoreoidManager.username) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void ScoreoidOverlay_Loaded(object sender, RoutedEventArgs e)

@@ -38,7 +38,7 @@ namespace ScoreoidUI
         private void ScoreoidManager_Refresh(object sender, EventArgs e)
         {
             ScoreoidManager.CachedPlayer = null;
-            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { Refresh(); });
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Refresh);
         }
 
         public async void Refresh()
