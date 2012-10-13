@@ -8,11 +8,13 @@ namespace Scoreoid
         {
         }
 
-        public ScoreoidException(string message) : base(message)
+        public ScoreoidException(string message)
+            : base(message)
         {
         }
 
-        public ScoreoidException(string message, Exception innerException) : base(message, innerException)
+        public ScoreoidException(string message, Exception innerException)
+            : base(message, innerException)
         {
         }
     }

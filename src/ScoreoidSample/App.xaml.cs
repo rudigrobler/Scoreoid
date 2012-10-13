@@ -57,6 +57,7 @@ namespace Scoreoid.Sample
                     throw new Exception("Failed to create initial page");
                 }
             }
+
             // Ensure the current window is active
             Window.Current.Activate();
         }
@@ -71,6 +72,7 @@ namespace Scoreoid.Sample
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             SuspendingDeferral deferral = e.SuspendingOperation.GetDeferral();
+
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }

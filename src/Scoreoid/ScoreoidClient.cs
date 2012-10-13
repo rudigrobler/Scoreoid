@@ -139,6 +139,6 @@ namespace Scoreoid
             return responseMessageContent;
         }
 
-        #endregion
+        #endregion POST
     }
 }
