@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("ScoreoidUI")]
+[assembly: AssemblyDescription("Scoreoid for Windows 8 is the unofficial SDK for integrating with Scoreoid.")]
 [assembly: AssemblyCompany("Rudi Grobler")]
 [assembly: AssemblyProduct("Scoreoid for Windows 8")]
 [assembly: AssemblyVersion("1.0.0.0")]

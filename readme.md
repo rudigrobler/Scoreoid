@@ -1,6 +1,6 @@
 # Scoreoid for Windows 8
 
-Scoreoid for Windows 8 is "unofficial" SDK for integrating with Scoreoid in Windows Store applications.
+Scoreoid for Windows 8 is the "unofficial" SDK for integrating with Scoreoid.
 
 ## What Is scoreoid?
 
