@@ -1,4 +1,5 @@
-﻿using Windows.System;
+﻿using System;
+using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -33,7 +34,7 @@ namespace ScoreoidUI
             Visibility = Visibility.Collapsed;
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(username.Text))
             {
@@ -48,7 +49,7 @@ namespace ScoreoidUI
             {
                 var dlg = new MessageDialog("Please enter a valid scoreoid username and/or password") {Title = "ERROR"};
                 dlg.Title = "ERROR";
-                dlg.ShowAsync();
+                await dlg.ShowAsync();
             }
         }
 

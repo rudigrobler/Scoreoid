@@ -1,48 +1,62 @@
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace Scoreoid
 {
-    using System;
-
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "", IsNullable = false)]
     public class games
     {
-        [System.Xml.Serialization.XmlElementAttribute("game", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [XmlElement("game", Form = XmlSchemaForm.Unqualified)]
         public game[] items { get; set; }
     }
 
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [XmlType(AnonymousType = true)]
     public class game
     {
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute]
         public string name { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string short_description { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string description { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string game_type { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string version { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string levels { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string platform { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string play_url { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string website_url { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string created { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string updated { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string players_count { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string scores_count { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string locked { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+
+        [XmlAttribute]
         public string status { get; set; }
     }
 }

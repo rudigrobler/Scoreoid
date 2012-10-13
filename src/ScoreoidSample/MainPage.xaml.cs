@@ -37,7 +37,7 @@ namespace Scoreoid.Sample
 
                 Leaderboard leaderboard = await ScoreoidManager.GetLeaderboard();
                 string leaderboardDebugString = string.Empty;
-                foreach (LeaderboardItem item in leaderboard.Items)
+                foreach (LeaderboardItem item in leaderboard)
                 {
                     leaderboardDebugString += item.Rank + " - " + item.Player + " - " + item.Score + Environment.NewLine;
                 }

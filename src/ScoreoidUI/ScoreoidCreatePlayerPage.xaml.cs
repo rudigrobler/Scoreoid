@@ -70,7 +70,7 @@ namespace ScoreoidUI
             else
             {
                 var dlg = new MessageDialog("username is required") {Title = "ERROR"};
-                dlg.ShowAsync();
+                await dlg.ShowAsync();
 
                 save.IsEnabled = true;
             }

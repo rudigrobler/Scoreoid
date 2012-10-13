@@ -108,18 +108,16 @@ namespace ScoreoidUI
 
         public static async Task<Leaderboard> GetLeaderboard(string order_by, string order, int limit)
         {
-            var leaderboard = new Leaderboard();
             scores scores = await ScoreoidClient.GetBestScoresAsync(order_by, order, limit);
             int rank = 1;
-            leaderboard.Items = (from _ in scores.items
-                                 select new LeaderboardItem
-                                            {
-                                                Rank = rank++,
-                                                Player = _.username,
-                                                Score = _.scores.First().value
-                                            }).ToArray();
 
-            return leaderboard;
+            return new Leaderboard(from _ in scores.items
+                                   select new LeaderboardItem
+                                              {
+                                                  Rank = rank++,
+                                                  Player = _.username,
+                                                  Score = _.scores.First().value
+                                              });
         }
     }
 }

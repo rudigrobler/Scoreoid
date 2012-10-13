@@ -67,6 +67,19 @@ namespace Scoreoid
             throw new ScoreoidException();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
+        public async  Task<games> GetGameAsync()
+        {
+            var post_data = new Dictionary<string, string>();
+            post_data["api_key"] = api_key;
+            post_data["game_id"] = game_id;
+            post_data["response"] = response;
+
+            const string uri = "https://www.scoreoid.com/api/getGame";
+
+            return await ScoreoidPostAsync<games>(uri, post_data);
+        }
+
         public async Task<players> GetPlayerAsync(string username)
         {
             return await GetPlayerAsync(username, null);

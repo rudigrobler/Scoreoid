@@ -24,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -113,6 +114,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ScoreoidPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DebugHelpers.cs" />
@@ -129,6 +134,9 @@
     <Compile Include="ScoreoidManager.cs" />
     <Compile Include="ScoreoidOverlay.xaml.cs">
       <DependentUpon>ScoreoidOverlay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScoreoidPane.xaml.cs">
+      <DependentUpon>ScoreoidPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="TextBoxHelpers.cs" />
   </ItemGroup>

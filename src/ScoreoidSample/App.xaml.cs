@@ -2,8 +2,14 @@
 using ScoreoidUI;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.ApplicationSettings;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Popups;
+using Callisto.Controls;
 
 namespace Scoreoid.Sample
 {
@@ -60,6 +66,8 @@ namespace Scoreoid.Sample
 
             // Ensure the current window is active
             Window.Current.Activate();
+
+            SettingsPane.GetForCurrentView().CommandsRequested += App_CommandsRequested;
         }
 
         /// <summary>
@@ -71,10 +79,33 @@ namespace Scoreoid.Sample
         /// <param name="e">Details about the suspend request.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
+            SettingsPane.GetForCurrentView().CommandsRequested -= App_CommandsRequested;
+
             SuspendingDeferral deferral = e.SuspendingOperation.GetDeferral();
 
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+        
+        void App_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            var cmd = new SettingsCommand("Scoreoid", "Scoreoid", (x) =>
+            {
+                var settings = new SettingsFlyout();
+                settings.FlyoutWidth = Callisto.Controls.SettingsFlyout.SettingsFlyoutWidth.Narrow;
+
+                settings.Background = new SolidColorBrush(Colors.White);
+                settings.HeaderBrush = new SolidColorBrush(Colors.Blue);
+                settings.HeaderText = "Scoreoid";
+
+                BitmapImage bmp = new BitmapImage(new Uri("ms-appx:///Assets/SmallLogo.png"));
+                settings.SmallLogoImageSource = bmp;
+
+                settings.Content = new ScoreoidUI.ScoreoidPane();
+                settings.IsOpen = true;
+            });
+
+            args.Request.ApplicationCommands.Add(cmd);
         }
     }
 }
