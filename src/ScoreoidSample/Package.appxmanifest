@@ -1,7 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml
+  version="1.0"
+  encoding="utf-8"?>
 
-<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="71c277f5-9707-44b2-a8c3-4989bddbe099" Publisher="CN=Rudi Grobler" Version="1.0.0.0" />
+<Package
+  xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity
+    Name="71c277f5-9707-44b2-a8c3-4989bddbe099"
+    Publisher="CN=Rudi Grobler"
+    Version="1.0.0.0" />
   <Properties>
     <DisplayName>Scoreoid.Sample</DisplayName>
     <PublisherDisplayName>Rudi Grobler</PublisherDisplayName>
@@ -12,18 +18,31 @@
     <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
   </Prerequisites>
   <Resources>
-    <Resource Language="x-generate" />
+    <Resource
+      Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Scoreoid.Sample.App">
-      <VisualElements DisplayName="Scoreoid Sample" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png"
-                      Description="Scoreoid Sample" ForegroundText="light" BackgroundColor="#FFFFFF">
-        <DefaultTile WideLogo="Assets\WideLogo.png" />
-        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#FFFFFF" />
+    <Application
+      Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="Scoreoid.Sample.App">
+      <VisualElements
+        DisplayName="Scoreoid Sample"
+        Logo="Assets\Logo.png"
+        SmallLogo="Assets\SmallLogo.png"
+        Description="Scoreoid Sample"
+        ForegroundText="light"
+        BackgroundColor="#FFFFFF">
+        <DefaultTile
+          WideLogo="Assets\WideLogo.png" />
+        <SplashScreen
+          Image="Assets\SplashScreen.png"
+          BackgroundColor="#FFFFFF" />
       </VisualElements>
     </Application>
   </Applications>
   <Capabilities>
-    <Capability Name="internetClient" />
+    <Capability
+      Name="internetClient" />
   </Capabilities>
 </Package>

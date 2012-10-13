@@ -1,59 +1,146 @@
-<UserControl x:Class="ScoreoidUI.GameCard" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" d:DesignHeight="300" d:DesignWidth="400" mc:Ignorable="d">
+<UserControl
+   x:Class="ScoreoidUI.GameCard"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   d:DesignHeight="300"
+   d:DesignWidth="400"
+   mc:Ignorable="d">
    <UserControl.Resources>
-      <Style x:Key="BasicTextStyle" TargetType="TextBlock">
-         <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}" />
-         <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
-         <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
-         <Setter Property="TextTrimming" Value="WordEllipsis" />
-         <Setter Property="TextWrapping" Value="Wrap" />
-         <Setter Property="Typography.StylisticSet20" Value="True" />
-         <Setter Property="Typography.DiscretionaryLigatures" Value="True" />
-         <Setter Property="Typography.CaseSensitiveForms" Value="True" />
+      <Style
+         x:Key="BasicTextStyle"
+         TargetType="TextBlock">
+         <Setter
+            Property="Foreground"
+            Value="{StaticResource ApplicationForegroundThemeBrush}" />
+         <Setter
+            Property="FontSize"
+            Value="{StaticResource ControlContentThemeFontSize}" />
+         <Setter
+            Property="FontFamily"
+            Value="{StaticResource ContentControlThemeFontFamily}" />
+         <Setter
+            Property="TextTrimming"
+            Value="WordEllipsis" />
+         <Setter
+            Property="TextWrapping"
+            Value="Wrap" />
+         <Setter
+            Property="Typography.StylisticSet20"
+            Value="True" />
+         <Setter
+            Property="Typography.DiscretionaryLigatures"
+            Value="True" />
+         <Setter
+            Property="Typography.CaseSensitiveForms"
+            Value="True" />
       </Style>
-      <Style x:Key="BaselineTextStyle" BasedOn="{StaticResource BasicTextStyle}" TargetType="TextBlock">
-         <Setter Property="LineHeight" Value="20" />
-         <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
-         <Setter Property="RenderTransform">
+      <Style
+         x:Key="BaselineTextStyle"
+         BasedOn="{StaticResource BasicTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="LineHeight"
+            Value="20" />
+         <Setter
+            Property="LineStackingStrategy"
+            Value="BlockLineHeight" />
+         <Setter
+            Property="RenderTransform">
             <Setter.Value>
-               <TranslateTransform X="-1" Y="4" />
+               <TranslateTransform
+                  X="-1"
+                  Y="4" />
             </Setter.Value>
          </Setter>
       </Style>
-      <Style x:Key="TitleTextStyle" BasedOn="{StaticResource BaselineTextStyle}" TargetType="TextBlock">
-         <Setter Property="FontWeight" Value="SemiBold" />
+      <Style
+         x:Key="TitleTextStyle"
+         BasedOn="{StaticResource BaselineTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="FontWeight"
+            Value="SemiBold" />
       </Style>
-      <Style x:Key="SubtitleTextStyle" BasedOn="{StaticResource BaselineTextStyle}" TargetType="TextBlock">
-         <Setter Property="FontWeight" Value="Normal" />
+      <Style
+         x:Key="SubtitleTextStyle"
+         BasedOn="{StaticResource BaselineTextStyle}"
+         TargetType="TextBlock">
+         <Setter
+            Property="FontWeight"
+            Value="Normal" />
       </Style>
    </UserControl.Resources>
-   <Grid x:Name="layoutRoot" Width="330" Height="62" VerticalAlignment="Top" Background="#7F000000" IsTapEnabled="True"
-         Tapped="Refresh_Tapped">
-      <Grid x:Name="playerDetails" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False"
-            Visibility="Collapsed">
+   <Grid
+      x:Name="layoutRoot"
+      Width="330"
+      Height="62"
+      VerticalAlignment="Top"
+      Background="#7F000000"
+      IsTapEnabled="True"
+      Tapped="Refresh_Tapped">
+      <Grid
+         x:Name="playerDetails"
+         HorizontalAlignment="Stretch"
+         VerticalAlignment="Stretch"
+         IsHitTestVisible="False"
+         Visibility="Collapsed">
          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition
+               Width="Auto" />
+            <ColumnDefinition
+               Width="*" />
          </Grid.ColumnDefinitions>
-         <Border Grid.Column="0" HorizontalAlignment="Left" Margin="6" Background="Gray">
+         <Border
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            Margin="6"
+            Background="Gray">
             <Grid>
-               <Image Width="50" Height="50" Source="Assets/gravatarDefault.jpg" />
-               <Image x:Name="gravatar" Width="50" Height="50" />
+               <Image
+                  Width="50"
+                  Height="50"
+                  Source="Assets/gravatarDefault.jpg" />
+               <Image
+                  x:Name="gravatar"
+                  Width="50"
+                  Height="50" />
             </Grid>
          </Border>
-         <StackPanel Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Top">
-            <TextBlock x:Name="username" Style="{StaticResource TitleTextStyle}" Text="player.username" />
-            <TextBlock x:Name="best_score" Style="{StaticResource SubtitleTextStyle}" Text="player.best_score" />
+         <StackPanel
+            Grid.Column="1"
+            Margin="5,0,0,0"
+            VerticalAlignment="Top">
+            <TextBlock
+               x:Name="username"
+               Style="{StaticResource TitleTextStyle}"
+               Text="player.username" />
+            <TextBlock
+               x:Name="best_score"
+               Style="{StaticResource SubtitleTextStyle}"
+               Text="player.best_score" />
          </StackPanel>
       </Grid>
-      <StackPanel x:Name="errorDetails" HorizontalAlignment="Left" Margin="12,5,0,0" VerticalAlignment="Top"
-                  IsHitTestVisible="False" Visibility="Collapsed">
-         <TextBlock Style="{StaticResource TitleTextStyle}" Text="Game card not available" />
-         <TextBlock x:Name="errorMessage" Style="{StaticResource SubtitleTextStyle}" />
+      <StackPanel
+         x:Name="errorDetails"
+         HorizontalAlignment="Left"
+         Margin="12,5,0,0"
+         VerticalAlignment="Top"
+         IsHitTestVisible="False"
+         Visibility="Collapsed">
+         <TextBlock
+            Style="{StaticResource TitleTextStyle}"
+            Text="Game card not available" />
+         <TextBlock
+            x:Name="errorMessage"
+            Style="{StaticResource SubtitleTextStyle}" />
       </StackPanel>
-      <ProgressRing x:Name="inProgress" HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="True"
-                    IsHitTestVisible="False" />
+      <ProgressRing
+         x:Name="inProgress"
+         HorizontalAlignment="Center"
+         VerticalAlignment="Center"
+         IsActive="True"
+         IsHitTestVisible="False" />
    </Grid>
 </UserControl>
